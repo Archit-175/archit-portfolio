@@ -17,7 +17,7 @@ const liveDemos = [
     title: "Research: Kidney Seg",
     category: "PUBLICATIONS",
     description: "Co-authored work on Uncertainty Quantification in Kidney Segmentation.",
-    url: "https://arxiv.org", // Replace with actual URL
+    url: "https://drive.google.com/file/d/1ucTMprid8-kiHZHOUj5dqHAMaX5TwkIc/preview", // Replace with actual URL
     color: "bg-crimson",
     textColor: "text-black",
     accentColor: "text-black/70",
@@ -26,7 +26,7 @@ const liveDemos = [
     title: "Research: EEG Emotion",
     category: "PUBLICATIONS",
     description: "EEG Emotion Recognition using Deep Reinforcement Learning.",
-    url: "https://arxiv.org", // Replace with actual URL
+    url: "https://drive.google.com/file/d/1Zs-Phj2G10crf564G2ZLi1PqpycFY28y/preview", // Replace with actual URL
     color: "bg-white",
     textColor: "text-black",
     accentColor: "text-black/70",

@@ -111,7 +111,7 @@ export default function Home() {
         {/* DESCRIPTION */}
         <p
           className="
-            text-white/80
+            text-white/90
             leading-relaxed
             text-sm
             sm:text-base

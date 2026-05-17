@@ -34,7 +34,7 @@ const projects = [
       "Institutional workflow platform designed to digitize approvals, streamline coordination, and centralize administrative processes.",
     color: "bg-crimson",
     textColor: "text-white",
-    github: "#",
+    // github: "#",
   },
 
   {
@@ -45,8 +45,8 @@ const projects = [
     color: "bg-black",
     textColor: "text-white",
     border: "border-white/10",
-    github: "#",
-    paper: "#",
+    github: "https://github.com/Archit-175/EEG-Emotion-Recognition-RL",
+    paper: "https://drive.google.com/file/d/1Zs-Phj2G10crf564G2ZLi1PqpycFY28y/preview",
   },
 
 {
@@ -57,8 +57,8 @@ const projects = [
   color: "bg-[#5A1122]",
   textColor: "text-white",
   border: "border-red-400/20",
-  github: "#",
-  paper: "#",
+  // github: "#",
+  paper: "https://drive.google.com/file/d/1ucTMprid8-kiHZHOUj5dqHAMaX5TwkIc/preview",
 },
 
 {
@@ -69,7 +69,7 @@ const projects = [
   color: "bg-[rgba(155,27,48,0.12)]",
   textColor: "text-black",
   border: "border-[crimson/20]",
-  github: "#",
+  github: "https://github.com/Archit-175/Crawlers",
 },
   {
     name: "Pneumonia Detection",
@@ -80,7 +80,7 @@ const projects = [
     textColor: "text-white",
     border: "border-white/10",
     github: "https://github.com/Diya5772/pneumonia-detection",
-    paper: "https://github.com/Diya5772/pneumonia-detection/blob/main/Pneumonia%20Detection%20Report.pdf",
+    paper: "https://drive.google.com/file/d/1XV5Z1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q1/preview",
   },
 
   {
@@ -102,7 +102,7 @@ const projects = [
     color: "bg-black",
     textColor: "text-white",
     border: "border-white/10",
-    github: "#",
+    // github: "#",
   },
 ];
 

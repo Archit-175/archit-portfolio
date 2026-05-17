@@ -102,10 +102,10 @@ export default function HeroSection() {
 
         {/* Bottom Right: Action Button & Stamp */}
         <div className="absolute bottom-10 right-6 sm:bottom-12 sm:right-12 md:bottom-16 md:right-16 flex items-center gap-4 sm:gap-6 scale-75 sm:scale-100 origin-bottom-right pointer-events-auto">
-          <a href="#contact" className="group flex items-center gap-3 border border-white/30 bg-black/50 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none rounded-full px-6 py-2.5 hover:bg-white hover:text-black transition-all">
+          {/* <a href="#contact" className="group flex items-center gap-3 border border-white/30 bg-black/50 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none rounded-full px-6 py-2.5 hover:bg-white hover:text-black transition-all">
             <span className="font-inter text-sm tracking-widest uppercase font-semibold whitespace-nowrap">Connect Now</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
+          </a> */}
           
           {/* Red Stamp / Seal */}
           <div className="w-16 h-16 rounded-full border-2 border-crimson overflow-hidden shadow-lg bg-black">
