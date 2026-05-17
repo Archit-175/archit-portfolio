@@ -114,14 +114,14 @@ export default function ProjectCardsSection() {
     offset: ["start end", "end start"],
   });
 
-  // Cinematic staggered parallax
-  const y1 = useTransform(scrollYProgress, [0, 1], [120, -120]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [220, -220]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [80, -80]);
-  const y4 = useTransform(scrollYProgress, [0, 1], [180, -180]);
-  const y5 = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const y6 = useTransform(scrollYProgress, [0, 1], [200, -200]);
-  const y7 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  // Cinematic staggered parallax (scaled down for mobile stability)
+  const y1 = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [110, -110]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [90, -90]);
+  const y5 = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const y6 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const y7 = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
   const transforms = [y1, y2, y3, y4, y5, y6, y7];
 
@@ -146,7 +146,7 @@ export default function ProjectCardsSection() {
       {/* Ambient Glow */}
       <div className="absolute top-0 left-0 w-full h-[22vh] bg-[radial-gradient(circle_at_top,rgba(155,27,48,0.12),transparent_70%)] pointer-events-none" />
 {/* Floating Border Atmosphere */}
-<div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
+<div className="absolute inset-0 overflow-hidden pointer-events-none z-[1] hidden md:block">
 
   {/* Python */}
   <motion.div
@@ -346,16 +346,19 @@ export default function ProjectCardsSection() {
       {/* Cinematic Floating Layout */}
       <div className="max-w-[1600px] mx-auto relative z-10 pt-40 md:pt-54 px-8 md:px-20 pb-20">
 
-        {/* TOP ROW */}
-        <div className="flex justify-center gap-10 xl:gap-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-14 place-items-center">
 
-          {projects.slice(0, 4).map((project, idx) => {
+          {projects.map((project, idx) => {
 
-            const offsets = [
-              "mt-10",
-              "mt-0",
-              "mt-8",
-              "-mt-6",
+            // Desktop manual stagger to enhance the parallax look
+            const staggerClasses = [
+              "md:mt-10",
+              "md:mt-0",
+              "md:mt-20",
+              "md:-mt-10",
+              "md:mt-5",
+              "md:mt-16",
+              "md:-mt-4"
             ];
 
             return (
@@ -367,7 +370,7 @@ export default function ProjectCardsSection() {
 
                 initial={{
                   opacity: 0,
-                  y: 140,
+                  y: 100,
                 }}
 
                 whileInView={{
@@ -375,22 +378,22 @@ export default function ProjectCardsSection() {
                   y: 0,
                 }}
 
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-50px" }}
 
                 transition={{
-                  duration: 1,
+                  duration: 0.8,
                   ease: [0.22, 1, 0.36, 1],
-                  delay: idx * 0.08,
+                  delay: (idx % 4) * 0.1,
                 }}
 
                 whileHover={{
-                  y: -20,
-                  scale: 1.035,
-                  rotateX: -4,
-                  rotateY: idx % 2 === 0 ? 4 : -4,
+                  y: -10,
+                  scale: 1.02,
+                  rotateX: -2,
+                  rotateY: idx % 2 === 0 ? 2 : -2,
                 }}
 
-                className={`relative group w-72 h-96 ${offsets[idx]}`}
+                className={`relative group w-full max-w-[288px] h-96 ${staggerClasses[idx]}`}
               >
 
                 {/* Glow */}
@@ -453,36 +456,36 @@ export default function ProjectCardsSection() {
                     </p>
 
                     {/* Action Links */}
-<div className="flex items-center gap-4 mb-6">
-
-  {project.github && (
-    <a
-      href={project.github}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`transition-all duration-300 hover:scale-110 ${
-        project.textColor === "text-white"
-          ? "text-white/70 hover:text-white"
-          : "text-black/60 hover:text-black"
-      }`}
-    >
-      <FaGithub size={20} />
-    </a>
-  )}
-  {project.paper && (
-    <a
-      href={project.paper}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`transition-all duration-300 hover:scale-110 ${
-        project.textColor === "text-white"
-          ? "text-white/70 hover:text-white"
-          : "text-black/60 hover:text-black"
-      }`}
-    >
-      <HiOutlineDocumentText size={22} />
-    </a>
-  )}
+                    <div className="flex items-center gap-4 mb-6">
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`transition-all duration-300 hover:scale-110 ${
+                            project.textColor === "text-white"
+                              ? "text-white/70 hover:text-white"
+                              : "text-black/60 hover:text-black"
+                          }`}
+                        >
+                          <FaGithub size={20} />
+                        </a>
+                      )}
+                      {project.paper && (
+                        <a
+                          href={project.paper}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`transition-all duration-300 hover:scale-110 ${
+                            project.textColor === "text-white"
+                              ? "text-white/70 hover:text-white"
+                              : "text-black/60 hover:text-black"
+                          }`}
+                        >
+                          <HiOutlineDocumentText size={22} />
+                        </a>
+                      )}
+                      
                       <div
                         className={`w-2 h-2 rounded-full ${
                           project.textColor === "text-white"
@@ -507,168 +510,6 @@ export default function ProjectCardsSection() {
           })}
 
         </div>
-
-        {/* BOTTOM ROW */}
-        <div className="flex justify-center gap-14 xl:gap-20 mt-28">
-
-          {projects.slice(4, 7).map((project, idx) => {
-
-            const offsets = [
-              "mt-0",
-              "mt-10",
-              "-mt-4",
-            ];
-
-            return (
-              <motion.div
-                key={idx + 4}
-                style={{
-                  y: transforms[idx + 4],
-                }}
-
-                initial={{
-                  opacity: 0,
-                  y: 140,
-                }}
-
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-
-                viewport={{ once: true, margin: "-100px" }}
-
-                transition={{
-                  duration: 1,
-                  ease: [0.22, 1, 0.36, 1],
-                  delay: idx * 0.08,
-                }}
-
-                whileHover={{
-                  y: -20,
-                  scale: 1.035,
-                  rotateX: -4,
-                  rotateY: idx % 2 === 0 ? 4 : -4,
-                }}
-
-                className={`relative group w-72 h-96 ${offsets[idx]}`}
-              >
-
-                {/* Glow */}
-                <div
-                  className={`absolute -inset-4 blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700 ${
-                    project.color === "bg-crimson"
-                      ? "bg-crimson/25"
-                      : "bg-black/10"
-                  }`}
-                />
-
-                {/* Floating Border Glow */}
-                <motion.div
-                  animate={{
-                    opacity: [0.1, 0.25, 0.1],
-                    scale: [1, 1.03, 1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0 rounded-2xl border border-white/5 pointer-events-none"
-                />
-
-                {/* Card */}
-                <div
-                  className={`relative w-full h-full ${project.color} ${
-                    project.border ? `border ${project.border}` : ""
-                  } rounded-2xl p-8 flex flex-col justify-between overflow-hidden shadow-[0_30px_120px_rgba(0,0,0,0.18)] transition-all duration-500`}
-                >
-
-                  {/* Noise */}
-                  <div className="absolute inset-0 opacity-[0.03] mix-blend-soft-light bg-[url('/noise.png')]" />
-
-                  {/* Accent */}
-                  <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-50" />
-
-                  {/* Top */}
-                  <div className="relative z-10">
-                    <span
-                      className={`font-inter text-[10px] tracking-[0.32em] uppercase font-semibold opacity-60 ${project.textColor}`}
-                    >
-                      {project.category}
-                    </span>
-
-                    <h3
-                      className={`font-oswald text-3xl font-bold uppercase mt-5 leading-tight ${project.textColor}`}
-                    >
-                      {project.name}
-                    </h3>
-                  </div>
-
-                  {/* Bottom */}
-                  <div className="relative z-10">
-                    <p
-                      className={`font-inter text-[15px] leading-relaxed opacity-75 ${project.textColor}`}
-                    >
-                      {project.description}
-                    </p>
-
-                     {/* Action Links */}
-<div className="flex items-center gap-4 mb-6">
-
-  {project.github && (
-    <a
-      href={project.github}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`transition-all duration-300 hover:scale-110 ${
-        project.textColor === "text-white"
-          ? "text-white/70 hover:text-white"
-          : "text-black/60 hover:text-black"
-      }`}
-    >
-      <FaGithub size={20} />
-    </a>
-  )}
-  {project.paper && (
-    <a
-      href={project.paper}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`transition-all duration-300 hover:scale-110 ${
-        project.textColor === "text-white"
-          ? "text-white/70 hover:text-white"
-          : "text-black/60 hover:text-black"
-      }`}
-    >
-      <HiOutlineDocumentText size={22} />
-    </a>
-  )}
-                      <div
-                        className={`w-2 h-2 rounded-full ${
-                          project.textColor === "text-white"
-                            ? "bg-white"
-                            : "bg-black"
-                        }`}
-                      />
-
-                      <div
-                        className={`h-[1px] flex-1 ${
-                          project.textColor === "text-white"
-                            ? "bg-white/20"
-                            : "bg-black/20"
-                        }`}
-                      />
-                    </div>
-                  </div>
-
-                </div>
-              </motion.div>
-            );
-          })}
-
-        </div>
-
       </div>
     </section>
   );

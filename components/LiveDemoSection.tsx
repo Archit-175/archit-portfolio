@@ -48,7 +48,7 @@ function BrowserFrame({ url, title }: { url: string; title: string }) {
           <div className="w-3 h-3 rounded-full bg-[#28c840]" />
         </div>
         {/* URL Bar */}
-        <div className="flex-1 flex items-center gap-2 bg-[#2a2a2a] rounded-md px-3 py-1.5 mx-2">
+        <div className="flex-1 flex items-center gap-2 bg-[#2a2a2a] rounded-md px-3 py-1.5 mx-2 min-w-0">
           <svg className="w-3 h-3 text-white/30 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
           </svg>
@@ -109,7 +109,7 @@ export default function LiveDemoSection() {
     <section id="projects" ref={targetRef} className="relative h-auto md:h-[300vh] bg-black">
 
       {/* Mobile Layout: Vertical Stack */}
-      <div className="md:hidden flex flex-col gap-12 px-6 sm:px-12 py-24 relative z-10 w-full">
+      <div className="md:hidden flex flex-col gap-12 px-6 sm:px-12 py-12 md:py-24 relative z-10 w-full">
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-5 overflow-hidden">
           <h2 className="font-oswald text-[25vw] font-bold text-transparent" style={{ WebkitTextStroke: '2px white' }}>
             LIVE
@@ -125,7 +125,7 @@ export default function LiveDemoSection() {
               <p className={`font-inter text-sm opacity-80 ${demo.textColor}`}>{demo.description}</p>
             </div>
             {/* Browser Frame */}
-            <div className="w-full h-[50vh]">
+            <div className="w-full h-[40vh] sm:h-[50vh]">
               <BrowserFrame url={demo.url} title={demo.title} />
             </div>
           </div>

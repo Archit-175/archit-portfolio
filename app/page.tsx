@@ -23,8 +23,7 @@ export default function Home() {
       <LiveDemoSection />
       <LeadershipSection />
       
-
-  <footer
+<footer
   id="contact"
   className="relative overflow-hidden bg-white"
 >
@@ -35,94 +34,220 @@ export default function Home() {
     <img
       src="/footerbg.png"
       alt="Footer"
-      className="absolute bottom-0 w-full object-cover object-bottom"
+      className="
+        absolute bottom-0 w-full h-full
+        object-cover object-bottom
+        opacity-95
+      "
     />
 
-    {/* subtle fade */}
-    <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/40" />
+    {/* overlay */}
+    <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-black/60" />
 
   </div>
 
- {/* CONTENT */}
-<div className="relative z-10">
+  {/* CONTENT */}
+  <div className="relative z-10">
 
-  {/* TOP WHITE AREA */}
-  <div className="pt-40 text-center">
+    {/* TOP WHITE AREA */}
+    <div
+      className="
+        pt-12
+        sm:pt-16
+        md:pt-24
+        text-center
+        px-6
+      "
+    >
 
-    <p className="font-inter text-crimson uppercase tracking-[0.3em] text-sm mb-4">
-      Contact & Connect
-    </p>
-
-    <h2 className="font-oswald text-5xl md:text-7xl font-bold uppercase text-black">
-      LET’S BUILD
-    </h2>
-
-  </div>
-
-  {/* LOWER BLACK AREA */}
-  <div className="pt-[16rem] pb-14 px-6 sm:px-12 md:px-24">
-
-    <div className="max-w-3xl mx-auto text-center">
-
-      <p className="text-gray-400 leading-relaxed">
-        Open to AI systems, workflow automation,
-        technical products and research collaborations.
+      <p
+        className="
+          font-inter
+          text-crimson
+          uppercase
+          tracking-[0.28em]
+          text-[10px]
+          sm:text-sm
+          mb-3
+        "
+      >
+        Contact & Connect
       </p>
 
- 
-   {/* CONTACT + SOCIAL */}
-<div className="flex justify-center gap-5 mt-10 flex-wrap">
+      <h2
+        className="
+          font-oswald
+          font-bold
+          uppercase
+          text-black
+          text-4xl
+          sm:text-5xl
+          md:text-6xl
+          leading-none
+        "
+      >
+        LET’S BUILD
+      </h2>
 
-  {/* EMAIL */}
-  <a
-    href="mailto:architsavaliya175@gmail.com"
-    className="w-12 h-12 rounded-full bg-white/10 border border-white/10 text-white flex items-center justify-center hover:bg-crimson transition-all duration-300 hover:scale-110"
-  >
-    <FaEnvelope />
-  </a>
+    </div>
 
-  {/* CALL */}
-  <a
-    href="tel:+919978006612"
-    className="w-12 h-12 rounded-full bg-white/10 border border-white/10 text-white flex items-center justify-center hover:bg-crimson transition-all duration-300 hover:scale-110"
-  >
-    <FaPhone />
-  </a>
+    {/* LOWER BLACK AREA */}
+    <div
+      className="
+        pt-28
+        sm:pt-36
+        md:pt-44
+        lg:pt-[15rem]
+        pb-10
+        sm:pb-14
+        px-6
+        sm:px-12
+        md:px-24
+      "
+    >
 
-  {/* GITHUB */}
-  <a
-    href="https://github.com/Archit-175"
-    target="_blank"
-    className="w-12 h-12 rounded-full bg-white/10 border border-white/10 text-white flex items-center justify-center hover:bg-crimson transition-all duration-300 hover:scale-110"
-  >
-    <FaGithub />
-  </a>
+      <div className="max-w-3xl mx-auto text-center bg-black/20 backdrop-blur-[2px] rounded-3xl py-6">
 
-  {/* LINKEDIN */}
-  <a
-    href="https://www.linkedin.com/in/architsavaliya/"
-    target="_blank"
-    className="w-12 h-12 rounded-full bg-white/10 border border-white/10 text-white flex items-center justify-center hover:bg-crimson transition-all duration-300 hover:scale-110"
-  >
-    <FaLinkedin />
-  </a>
-
-  {/* INSTAGRAM */}
-  <a
-    href="https://www.instagram.com/archit_savaliya175/"
-    target="_blank"
-    className="w-12 h-12 rounded-full bg-white/10 border border-white/10 text-white flex items-center justify-center hover:bg-crimson transition-all duration-300 hover:scale-110"
-  >
-    <FaInstagram />
-  </a>
-
-</div>
-
-      <div className="mt-14 pt-8 border-t border-white/10">
-
-        <p className="text-xs uppercase tracking-[0.2em] text-gray-500">
-          © {new Date().getFullYear()} ARCHIT SAVALIYA
+        {/* DESCRIPTION */}
+        <p
+          className="
+            text-white/80
+            leading-relaxed
+            text-sm
+            sm:text-base
+            max-w-xl
+            mx-auto
+            px-4
+          "
+        >
+          Open to AI systems, workflow automation,
+          technical products and research collaborations.
         </p>
+
+        {/* ICONS */}
+        <div className="flex justify-center gap-4 sm:gap-5 mt-8 flex-wrap">
+
+          {/* EMAIL */}
+          <a
+            href="mailto:architsavaliya175@gmail.com"
+            className="
+              w-10 h-10
+              sm:w-12 sm:h-12
+              rounded-full
+              bg-white/10
+              border border-white/10
+              text-white
+              flex items-center justify-center
+              hover:bg-crimson
+              transition-all duration-300
+              hover:scale-110
+              backdrop-blur-md
+            "
+          >
+            <FaEnvelope size={16} />
+          </a>
+
+          {/* CALL */}
+          <a
+            href="tel:+919978006612"
+            className="
+              w-10 h-10
+              sm:w-12 sm:h-12
+              rounded-full
+              bg-white/10
+              border border-white/10
+              text-white
+              flex items-center justify-center
+              hover:bg-crimson
+              transition-all duration-300
+              hover:scale-110
+              backdrop-blur-md
+            "
+          >
+            <FaPhone size={15} />
+          </a>
+
+          {/* GITHUB */}
+          <a
+            href="https://github.com/Archit-175"
+            target="_blank"
+            className="
+              w-10 h-10
+              sm:w-12 sm:h-12
+              rounded-full
+              bg-white/10
+              border border-white/10
+              text-white
+              flex items-center justify-center
+              hover:bg-crimson
+              transition-all duration-300
+              hover:scale-110
+              backdrop-blur-md
+            "
+          >
+            <FaGithub size={17} />
+          </a>
+
+          {/* LINKEDIN */}
+          <a
+            href="https://www.linkedin.com/in/architsavaliya/"
+            target="_blank"
+            className="
+              w-10 h-10
+              sm:w-12 sm:h-12
+              rounded-full
+              bg-white/10
+              border border-white/10
+              text-white
+              flex items-center justify-center
+              hover:bg-crimson
+              transition-all duration-300
+              hover:scale-110
+              backdrop-blur-md
+            "
+          >
+            <FaLinkedin size={16} />
+          </a>
+
+          {/* INSTAGRAM */}
+          <a
+            href="https://www.instagram.com/archit_savaliya175/"
+            target="_blank"
+            className="
+              w-10 h-10
+              sm:w-12 sm:h-12
+              rounded-full
+              bg-white/10
+              border border-white/10
+              text-white
+              flex items-center justify-center
+              hover:bg-crimson
+              transition-all duration-300
+              hover:scale-110
+              backdrop-blur-md
+            "
+          >
+            <FaInstagram size={16} />
+          </a>
+
+        </div>
+
+        {/* COPYRIGHT */}
+        <div className="mt-8 pt-4 border-t border-white/10 mx-6">
+
+          <p
+            className="
+              text-[10px]
+              sm:text-xs
+              uppercase
+              tracking-[0.2em]
+              text-gray-500
+            "
+          >
+            © {new Date().getFullYear()} ARCHIT SAVALIYA
+          </p>
+
+        </div>
 
       </div>
 
@@ -130,7 +255,6 @@ export default function Home() {
 
   </div>
 
-</div>
 </footer>
     </main>
   );

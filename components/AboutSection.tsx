@@ -94,7 +94,7 @@ export default function AboutSection() {
         </div>
 
 {/* Center: System Identity Nodes */}
-<div className="relative flex items-center gap-6 sm:gap-8 md:gap-14">
+<div className="relative flex flex-wrap justify-center items-center gap-4 sm:gap-8 md:gap-14 w-full md:w-auto">
 
   {/* Main Connector Line */}
   <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -106,7 +106,7 @@ export default function AboutSection() {
   <motion.div
     whileHover={{ scale: 1.08, y: -4 }}
     transition={{ duration: 0.25 }}
-    className="relative flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-white text-black shadow-2xl before:absolute before:inset-0 before:bg-white/10 before:blur-2xl before:-z-10"
+    className="relative flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-white text-black shadow-2xl before:absolute before:inset-0 before:bg-white/10 before:blur-2xl before:-z-10 shrink-0"
   >
     {/* Node Marker */}
     <div className="absolute -top-2 w-2 h-2 rounded-full bg-white shadow-lg" />
@@ -124,7 +124,7 @@ export default function AboutSection() {
   <motion.div
     whileHover={{ scale: 1.1, y: -6 }}
     transition={{ duration: 0.25 }}
-    className="relative flex flex-col items-center justify-center w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-crimson text-white border-[5px] border-black shadow-2xl z-10 before:absolute before:inset-0 before:bg-crimson/20 before:blur-3xl before:-z-10"
+    className="relative flex flex-col items-center justify-center w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-crimson text-white border-[5px] border-black shadow-2xl z-10 before:absolute before:inset-0 before:bg-crimson/20 before:blur-3xl before:-z-10 shrink-0"
   >
     {/* Node Marker */}
     <div className="absolute -top-3 w-3 h-3 rounded-full bg-white shadow-xl" />
@@ -142,7 +142,7 @@ export default function AboutSection() {
   <motion.div
     whileHover={{ scale: 1.08, y: -4 }}
     transition={{ duration: 0.25 }}
-    className="relative flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-[#111] border border-white/10 text-white shadow-2xl before:absolute before:inset-0 before:bg-white/5 before:blur-2xl before:-z-10"
+    className="relative flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-[#111] border border-white/10 text-white shadow-2xl before:absolute before:inset-0 before:bg-white/5 before:blur-2xl before:-z-10 shrink-0"
   >
     {/* Node Marker */}
     <div className="absolute -top-2 w-2 h-2 rounded-full bg-crimson shadow-lg" />
@@ -200,11 +200,11 @@ export default function AboutSection() {
         </motion.div>
 
         {/* Floating Geometric Elements / Cards Column */}
-        <div className="relative h-[600px] hidden lg:block">
+        <div className="relative flex flex-col gap-6 lg:block lg:h-[600px] mt-12 lg:mt-0">
           {/* Card 1 */}
           <motion.div 
             style={{ y: y1, rotate: -6 }}
-            className="absolute top-10 left-10 w-64 h-80 bg-[#111] border border-white/10 rounded-xl p-6 shadow-2xl flex flex-col justify-between hover:scale-105 hover:z-10 transition-all duration-300 cursor-default before:absolute before:inset-0 before:bg-white/5 before:blur-3xl before:-z-10"
+            className="static lg:absolute lg:top-10 lg:left-10 w-full lg:w-64 h-64 lg:h-80 bg-[#111] border border-white/10 rounded-xl p-6 shadow-2xl flex flex-col justify-between hover:scale-105 hover:z-10 transition-all duration-300 cursor-default before:absolute before:inset-0 before:bg-white/5 before:blur-3xl before:-z-10"
           >
             <div className="w-10 h-10 rounded-full bg-crimson/20 flex items-center justify-center">
               <div className="w-4 h-4 bg-crimson rounded-full" />
@@ -217,7 +217,7 @@ export default function AboutSection() {
           {/* Card 2 */}
           <motion.div 
             style={{ y: y2, rotate: 6 }}
-            className="absolute top-40 right-0 w-64 h-80 bg-crimson text-black border border-crimson rounded-xl p-6 shadow-2xl flex flex-col justify-between z-10 hover:scale-105 transition-all duration-300 cursor-default before:absolute before:inset-0 before:bg-crimson/20 before:blur-3xl before:-z-10"
+            className="static lg:absolute lg:top-40 lg:right-0 w-full lg:w-64 h-64 lg:h-80 bg-crimson text-black border border-crimson rounded-xl p-6 shadow-2xl flex flex-col justify-between z-10 hover:scale-105 transition-all duration-300 cursor-default before:absolute before:inset-0 before:bg-crimson/20 before:blur-3xl before:-z-10"
           >
             <div className="w-10 h-10 rounded-full bg-black/20 flex items-center justify-center">
               <div className="w-4 h-4 bg-black rounded-full" />
@@ -230,7 +230,7 @@ export default function AboutSection() {
           {/* Card 3 */}
           <motion.div 
             style={{ y: y3, rotate: -3 }}
-            className="absolute bottom-0 left-20 w-64 h-80 bg-[#1a1a1a] border border-white/10 rounded-xl p-6 shadow-2xl flex flex-col justify-between hover:scale-105 transition-all duration-300 cursor-default before:absolute before:inset-0 before:bg-crimson/20 before:blur-3xl before:-z-10"
+            className="static lg:absolute lg:bottom-0 lg:left-20 w-full lg:w-64 h-64 lg:h-80 bg-[#1a1a1a] border border-white/10 rounded-xl p-6 shadow-2xl flex flex-col justify-between hover:scale-105 transition-all duration-300 cursor-default before:absolute before:inset-0 before:bg-crimson/20 before:blur-3xl before:-z-10"
           >
             <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
               <div className="w-4 h-4 bg-white rounded-full" />

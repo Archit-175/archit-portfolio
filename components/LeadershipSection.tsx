@@ -241,7 +241,7 @@ export default function LeadershipSection() {
             More Roles & Contributions
           </h3>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
             {/* MBMUN */}
             <div className="bg-[#0A0A0A] border border-white/10 p-7 hover:border-crimson/40 transition-all">
