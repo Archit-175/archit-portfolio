@@ -148,7 +148,7 @@ export default function AboutSection() {
     <div className="absolute -top-2 w-2 h-2 rounded-full bg-crimson shadow-lg" />
 
     <span className="font-oswald text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-white/50">
-      Publication
+      Paper
     </span>
 
     <span className="font-oswald text-xl sm:text-2xl md:text-3xl font-bold leading-none">

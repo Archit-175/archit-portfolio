@@ -2,8 +2,8 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import LeadershipSection from "@/components/LeadershipSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import SkillsSection from "@/components/SkillsSection";
+import LiveDemoSection from "@/components/LiveDemoSection";
+import ProjectCardsSection from "@/components/ProjectCardsSection";
 
 export default function Home() {
   return (
@@ -11,8 +11,8 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutSection />
-      <SkillsSection />
-      <ProjectsSection />
+      <ProjectCardsSection />
+      <LiveDemoSection />
       <LeadershipSection />
       
       {/* Simple Footer / Contact Section */}

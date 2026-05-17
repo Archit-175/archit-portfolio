@@ -20,7 +20,7 @@ export default function Navbar() {
       <div className="hidden lg:flex items-center gap-6 text-xs md:text-sm font-inter tracking-[0.2em] text-white/70 uppercase">
         <a href="#about" className="hover:text-crimson hover:-translate-y-0.5 transition-all duration-300">About</a>
         <span className="text-crimson/80">•</span>
-        <a href="#projects" className="hover:text-crimson hover:-translate-y-0.5 transition-all duration-300">Project</a>
+        <a href="#projects" className="hover:text-crimson hover:-translate-y-0.5 transition-all duration-300">Live Demo</a>
         <span className="text-crimson/80">•</span>
         <a href="#leadership" className="hover:text-crimson hover:-translate-y-0.5 transition-all duration-300">Leadership</a>
         <span className="text-crimson/80">•</span>
