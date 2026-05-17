@@ -66,9 +66,9 @@ const projects = [
   category: "Interactive Platform",
   description:
     "Environmental exploration platform featuring immersive navigation, dynamic content systems, and engagement tools.",
-  color: "bg-[#E8F1EC]",
+  color: "bg-[rgba(155,27,48,0.12)]",
   textColor: "text-black",
-  border: "border-[#C7D9CE]",
+  border: "border-[crimson/20]",
   github: "#",
 },
   {
@@ -79,8 +79,8 @@ const projects = [
     color: "bg-[#111]",
     textColor: "text-white",
     border: "border-white/10",
-    github: "#",
-    paper: "#",
+    github: "https://github.com/Diya5772/pneumonia-detection",
+    paper: "https://github.com/Diya5772/pneumonia-detection/blob/main/Pneumonia%20Detection%20Report.pdf",
   },
 
   {
@@ -91,7 +91,7 @@ const projects = [
     color: "bg-gray-200",
     textColor: "text-black",
     border: "border-black/10",
-    github: "#",
+    github: "https://github.com/Nilangbhuva/Convolve",
   },
 
   {

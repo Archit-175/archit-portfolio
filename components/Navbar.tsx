@@ -30,7 +30,7 @@ export default function Navbar() {
       {/* Right: Actions */}
       <div className="flex items-center gap-4">
         <a 
-          href="/resume.pdf" 
+          href="https://drive.google.com/file/d/1FWpmHjfhW7APTLKznhLiSUx78kEst1Rr/view?usp=sharing" 
           target="_blank"
           className="flex items-center justify-center gap-2 text-white hover:text-crimson hover:border-crimson hover:-translate-y-0.5 transition-all duration-300 border border-white/10 rounded-full px-4 py-2 text-sm font-inter tracking-widest uppercase shadow-lg hover:shadow-crimson/20"
         >

@@ -5,10 +5,10 @@ import { useRef, useState } from "react";
 
 const liveDemos = [
   {
-    title: "SamparkX",
-    category: "INCUBATION",
-    description: "Startup incubation project digitizing institutional workflows.",
-    url: "https://samparkx.vercel.app", // Replace with actual URL
+    title: "Crawlers",
+    category: "Interactive Platform",
+    description: "Environmental exploration platform featuring immersive navigation, dynamic content systems, and engagement tools.",
+    url: "https://crawlers-one.vercel.app/", // Replace with actual URL
     color: "bg-[#111]",
     textColor: "text-white",
     accentColor: "text-crimson",
@@ -154,7 +154,7 @@ export default function LiveDemoSection() {
                   <p className={`font-oswald text-xs tracking-widest opacity-70 uppercase ${demo.textColor}`}>{demo.category}</p>
                   <h3 className={`font-oswald text-3xl font-bold uppercase ${demo.textColor}`}>{demo.title}</h3>
                 </div>
-                <p className={`font-inter text-sm max-w-xs opacity-80 text-right ${demo.textColor}`}>{demo.description}</p>
+                <p className={`font-inter text-sm  opacity-80 text-right ${demo.textColor}`}>{demo.description}</p>
               </div>
 
               {/* Browser Frame — takes remaining height */}
