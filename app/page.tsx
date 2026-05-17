@@ -11,12 +11,12 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutSection />
-      <LeadershipSection />
-      <ProjectsSection />
       <SkillsSection />
+      <ProjectsSection />
+      <LeadershipSection />
       
       {/* Simple Footer / Contact Section */}
-      <footer id="contact" className="py-24 px-12 md:px-24 lg:px-32 text-center border-t border-black/10 bg-white text-black transition-colors duration-1000">
+      <footer id="contact" className="py-24 px-6 sm:px-12 md:px-24 lg:px-32 text-center border-t border-black/10 bg-white text-black transition-colors duration-1000">
         <h2 className="font-oswald text-4xl md:text-5xl font-bold uppercase mb-8">Ready to Build?</h2>
         <a href="mailto:contact@example.com" className="font-inter text-crimson text-xl md:text-2xl hover:text-black transition-colors border-b border-crimson hover:border-black pb-1">
           contact@example.com

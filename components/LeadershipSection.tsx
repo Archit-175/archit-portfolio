@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function LeadershipSection() {
   return (
-    <section id="leadership" className="relative min-h-screen py-32 px-12 md:px-24 lg:px-32 bg-black border-y border-white/5">
+    <section id="leadership" className="relative min-h-screen py-24 sm:py-32 px-6 sm:px-12 md:px-24 lg:px-32 bg-black border-y border-white/5">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
@@ -14,7 +14,7 @@ export default function LeadershipSection() {
           className="text-center mb-24"
         >
           <p className="font-inter text-crimson tracking-[0.2em] uppercase text-sm mb-4">Leadership & Execution</p>
-          <h2 className="font-oswald text-5xl md:text-7xl lg:text-[8rem] font-bold uppercase tracking-tighter leading-none">
+          <h2 className="font-oswald text-4xl sm:text-5xl md:text-7xl lg:text-[8rem] font-bold uppercase tracking-tighter leading-none">
             COMMUNITY <br/> <span className="text-white/20">& STRATEGY</span>
           </h2>
         </motion.div>
@@ -26,7 +26,7 @@ export default function LeadershipSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="bg-black p-12 lg:p-20 hover:bg-[#050505] transition-colors group"
+            className="bg-black p-8 sm:p-12 lg:p-20 hover:bg-[#111] border border-transparent hover:border-white/10 transition-all duration-300 group cursor-pointer"
           >
             <div className="text-crimson font-oswald text-xl mb-6">01</div>
             <h3 className="font-oswald text-3xl md:text-4xl font-bold uppercase mb-6 group-hover:text-crimson transition-colors">
@@ -46,7 +46,7 @@ export default function LeadershipSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="bg-black p-12 lg:p-20 hover:bg-[#050505] transition-colors group"
+            className="bg-black p-8 sm:p-12 lg:p-20 hover:bg-[#111] border border-transparent hover:border-white/10 transition-all duration-300 group cursor-pointer"
           >
             <div className="text-crimson font-oswald text-xl mb-6">02</div>
             <h3 className="font-oswald text-3xl md:text-4xl font-bold uppercase mb-6 group-hover:text-crimson transition-colors">

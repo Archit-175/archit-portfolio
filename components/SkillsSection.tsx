@@ -28,7 +28,7 @@ export default function SkillsSection() {
   const transforms = [y1, y2, y3, y4, y5];
 
   return (
-    <section id="skills" ref={ref} className="relative min-h-[150vh] bg-white py-32 overflow-hidden border-t border-black/10 transition-colors duration-1000">
+    <section id="skills" ref={ref} className="relative min-h-[150vh] bg-white py-10 overflow-hidden border-t border-black/10 transition-colors duration-1000">
       
       <div className="absolute top-32 w-full text-center z-20 pointer-events-none">
         <h2 className="font-oswald text-4xl md:text-6xl font-bold uppercase tracking-wider text-black drop-shadow-md">
@@ -36,16 +36,18 @@ export default function SkillsSection() {
         </h2>
       </div>
 
-      <div className="max-w-7xl mx-auto h-full flex flex-wrap justify-center items-center gap-8 relative z-10 pt-64 px-12 md:px-24 lg:px-32">
+      <div className="max-w-7xl mx-auto h-full flex flex-wrap justify-center items-center gap-6 sm:gap-8 relative z-10 pt-48 md:pt-64 px-6 sm:px-12 md:px-24 lg:px-32 pb-32">
         {skills.map((skill, idx) => (
           <motion.div
             key={idx}
             style={{ y: transforms[idx] }}
-            className={`w-64 h-80 ${skill.color} ${skill.border ? `border ${skill.border}` : ''} rounded-xl p-8 flex flex-col justify-center items-center text-center shadow-2xl transition-transform hover:scale-105 cursor-pointer`}
+            className="w-64 h-80"
           >
-            <h3 className={`font-oswald text-2xl font-bold uppercase ${skill.textColor}`}>
-              {skill.name}
-            </h3>
+            <div className={`w-full h-full ${skill.color} ${skill.border ? `border ${skill.border}` : ''} rounded-xl p-8 flex flex-col justify-center items-center text-center shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 cursor-pointer`}>
+              <h3 className={`font-oswald text-2xl font-bold uppercase ${skill.textColor}`}>
+                {skill.name}
+              </h3>
+            </div>
           </motion.div>
         ))}
       </div>
