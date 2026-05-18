@@ -61,7 +61,10 @@ export default function HeroSection() {
         */}
 
         {/* Massive Background Typography */}
-        <motion.div 
+        <motion.div
+        initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+transition={{ duration: 1.2, ease: "easeOut" }} 
           style={{ y: textY }}
           className="absolute top-[38%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full text-center pointer-events-none"
         >
