@@ -97,7 +97,7 @@ export default function Footer(){
       <div className="max-w-3xl mx-auto text-center bg-black/20 backdrop-blur-[2px] rounded-3xl py-6">
 
         {/* DESCRIPTION */}
-        <p
+        {/* <p
           className="
             text-white/90
             leading-relaxed
@@ -105,12 +105,12 @@ export default function Footer(){
             sm:text-base
             max-w-xl
             mx-auto
-            px-4
+            px-5
           "
         >
-          Open to AI systems, workflow automation,
-          technical products and research collaborations.
-        </p>
+          Open to AI systems, workflow automation and
+          technical products .
+        </p> */}
 
         {/* ICONS */}
         <div className="flex justify-center gap-4 sm:gap-5 mt-8 flex-wrap">

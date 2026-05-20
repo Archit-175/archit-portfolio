@@ -57,7 +57,7 @@ const projects = [
   color: "bg-[#5A1122]",
   textColor: "text-white",
   border: "border-red-400/20",
-  // github: "#",
+  github: "https://github.com/Archit-175/KidneyTumorSegmentation-ARUGD",
   paper: "https://drive.google.com/file/d/1ucTMprid8-kiHZHOUj5dqHAMaX5TwkIc/preview",
 },
 
