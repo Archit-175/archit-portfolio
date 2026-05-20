@@ -19,7 +19,7 @@ export default function Footer(){
   {/* BACKGROUND */}
   <div className="absolute inset-0">
 
-    <img
+    {/* <img
       src="/footerbg.png"
       alt="Footer"
       className="
@@ -27,7 +27,28 @@ export default function Footer(){
         object-cover object-bottom
         opacity-95
       "
-    />
+    /> */}
+    <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+  className="
+    absolute
+    inset-0
+
+    w-full
+    h-full
+
+    object-cover
+    object-bottom
+
+    opacity-95
+  "
+>
+  <source src="/footerbg.mp4" type="video/mp4" />
+</video>
 
     {/* overlay */}
     <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-black/60" />

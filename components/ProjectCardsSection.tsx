@@ -426,9 +426,6 @@ export default function ProjectCardsSection() {
                   } rounded-2xl p-8 flex flex-col justify-between overflow-hidden shadow-[0_30px_120px_rgba(0,0,0,0.18)] transition-all duration-500`}
                 >
 
-                  {/* Noise */}
-                  <div className="absolute inset-0 opacity-[0.03] mix-blend-soft-light bg-[url('/noise.png')]" />
-
                   {/* Accent */}
                   <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-50" />
 

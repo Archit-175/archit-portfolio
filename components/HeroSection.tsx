@@ -41,68 +41,314 @@ export default function HeroSection() {
         </motion.div>
  
 
-        {/* Center Background Red Circle */}
-        <motion.div 
-          style={{ y: circleY }}
-          className="absolute top-[38%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-crimson rounded-full opacity-90 blur-[2px]"
-        />
-
-        {/* Diagonal Grey Strip Behind ARCHIT text and SVG */}
-        {/* 
-        <div className="absolute top-[80%] z-[5] w-[120vw] h-10 md:h-12 bg-gray-800 -rotate-3 flex items-center overflow-hidden border-y-2 border-black drop-shadow-2xl">
-          <div className="flex space-x-4 whitespace-nowrap animate-pulse">
-            {[...Array(10)].map((_, i) => (
-              <span key={i} className="font-oswald text-lg md:text-xl font-bold tracking-widest text-white uppercase" style={{ WebkitTextStroke: '1px black' }}>
-                SCALABLE SYSTEMS • INTELLIGENT WORKFLOWS • 
-              </span>
-            ))}
-          </div>
-        </div>
-        */}
-
         {/* Massive Background Typography */}
-        <motion.div
-        initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-transition={{ duration: 1.2, ease: "easeOut" }} 
-          style={{ y: textY }}
-          className="absolute top-[38%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full text-center pointer-events-none"
-        >
-          <h1 className="font-oswald text-[22vw] sm:text-[20vw] md:text-[24vw] lg:text-[28vw] leading-none font-bold tracking-tighter text-white drop-shadow-2xl select-none">&lt;ARCHIT&gt;
-          </h1>
-        </motion.div>
+{/* Massive Background Typography */}
+<motion.div
+  initial={{
+    opacity: 0,
+    scale: 0.9,
+    filter: "blur(10px)"
+  }}
+  animate={{
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)"
+  }}
+  transition={{
+    duration: 1.2,
+    ease: "easeOut"
+  }}
+  style={{ y: textY }}
+  className="
+  absolute
+  top-[38%]
+  md:top-1/2
+  left-1/2
+  -translate-x-1/2
+  -translate-y-1/2
+  z-10
+  w-full
+  text-center
+  pointer-events-none
+  overflow-hidden
+"
+>
+  <div className="relative inline-block">
+
+    {/* crimson glow */}
+    <motion.div
+      initial={{
+        opacity: 0,
+        scale: .7
+      }}
+      animate={{
+        opacity: 1,
+        scale: 1
+      }}
+      transition={{
+        duration: 1.2
+      }}
+      className="
+      absolute
+      inset-0
+    
+      blur-[90px]
+      rounded-full
+      "
+    />
+
+    {/* left → right reveal */}
+    <motion.div
+      initial={{
+        width: "0%"
+      }}
+      animate={{
+        width: "100%"
+      }}
+      transition={{
+        duration: 1.4,
+        ease: [0.22,1,0.36,1]
+      }}
+      className="
+      overflow-hidden
+      mx-auto
+      "
+    >
+
+      <motion.h1
+        initial={{
+          opacity: 0,
+          x: -120
+        }}
+        animate={{
+          opacity: 1,
+          x: 0
+        }}
+        transition={{
+          duration: 1.2
+        }}
+        className="
+        font-oswald
+        text-[22vw]
+        sm:text-[20vw]
+        md:text-[24vw]
+        lg:text-[28vw]
+        leading-none
+        font-bold
+        tracking-tighter
+        text-white
+        drop-shadow-2xl
+        select-none
+        whitespace-nowrap
+        "
+      >
+        &lt;ARCHIT&gt;
+      </motion.h1>
+
+      {/* scan line */}
+      <motion.div
+        animate={{
+          x: ["-100%", "120%"]
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+        className="
+        absolute
+        top-1/2
+        left-0
+        w-full
+        h-[3px]
+        bg-gradient-to-r
+        from-transparent
+        via-red-500
+        to-transparent
+        blur-sm
+        opacity-70
+        "
+      />
+
+    </motion.div>
+
+  </div>
+</motion.div>
 
       </section>
 
       {/* Scrolling Foreground — figure moves with natural page scroll to stay attached to AboutSection */}
-      <div className="relative z-10 -mt-[100vh] h-screen w-full pointer-events-none flex justify-center">
-        <div className="absolute bottom-0 w-full max-w-[600px] md:max-w-[800px] h-[85vh]">
-          <Image
-            src="/archit.svg"
-            alt="Archit Savaliya Silhouette"
-            fill
-            priority
-            className="object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
-      </div>
+<div className="
+relative
+z-10
+-mt-[100vh]
+h-screen
+w-full
+pointer-events-none
+flex
+justify-center
+"
+>
+  <motion.div
+    initial={{
+      opacity:0,
+      y:180,
+      scale:.85,
+      rotate:-4,
+      filter:"blur(10px)"
+    }}
+    animate={{
+      opacity:1,
+      y:0,
+      scale:1,
+      rotate:0,
+      filter:"blur(0px)"
+    }}
+    transition={{
+      duration:1.4,
+      ease:[0.22,1,0.36,1]
+    }}
+    className="
+    absolute
+    bottom-0
+    w-full
+    max-w-[600px]
+    md:max-w-[800px]
+    h-[85vh]
+    "
+  >
+
+    {/* crimson aura */}
+    <motion.div
+      animate={{
+        scale:[1,1.08,1],
+        opacity:[.35,.55,.35]
+      }}
+      transition={{
+        duration:4,
+        repeat:Infinity,
+        ease:"easeInOut"
+      }}
+      className="
+      absolute
+      bottom-10
+      left-1/2
+      -translate-x-1/2
+      w-[70%]
+      h-[35%]
+      bg-crimson
+      blur-[120px]
+      rounded-full
+      opacity-40
+      "
+    />
+
+    {/* floating image */}
+    <motion.div
+    
+      className="relative w-full h-full"
+    >
+      <Image
+        src="/archit.svg"
+        alt="Archit Savaliya Silhouette"
+        fill
+        priority
+        className="
+        object-contain
+        object-bottom
+        drop-shadow-[0_30px_80px_rgba(0,0,0,0.95)]
+        "
+        sizes="(max-width:768px)100vw,50vw"
+      />
+    </motion.div>
+
+  </motion.div>
+</div>
 
       {/* Sticky UI — pinned ON TOP of both background and scrolling figure */}
       <div className="sticky top-0 h-screen w-full pointer-events-none z-20 -mt-[100vh]">
         {/* Bottom Left: Bio Block */}
-        <div className="absolute top-[55%] sm:top-[60%] md:top-auto md:bottom-16 left-6 sm:left-12 md:left-16 max-w-[280px] sm:max-w-xs bg-black/40 backdrop-blur-sm p-4 rounded-xl border border-white/5 sm:bg-transparent sm:backdrop-blur-none sm:p-0 sm:border-none sm:rounded-none pointer-events-auto">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-4 h-4 bg-crimson rounded-full flex items-center justify-center">
-              <div className="w-1.5 h-1.5 bg-black rounded-full" />
-            </div>
-            <span className="font-oswald text-crimson text-sm tracking-widest uppercase">SVNIT</span>
-          </div>
-          <p className="font-inter text-xs md:text-sm text-white/70 leading-relaxed"> Building &nbsp;
-            <strong className="text-white">AI</strong>-driven systems, scalable workflows, and product-focused digital experiences where technology meets execution.
-          </p>
-        </div>
+<motion.div
+  initial={{
+    opacity: 0,
+    x: -60,
+    y: 30
+  }}
+  animate={{
+    opacity: 1,
+    x: 0,
+    y: [0, -4, 0]
+  }}
+  transition={{
+    opacity: { duration: 1, delay: 0.5 },
+    x: {
+      duration: 1,
+      delay: 0.5,
+      ease: [0.22, 1, 0.36, 1]
+    },
+    y: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }}
+  className="
+  absolute
+  bottom-14
+  left-8
+  md:left-16
 
+  max-w-[300px]
+
+  pointer-events-auto
+"
+>
+
+  <div className="flex items-center gap-3 mb-3">
+
+    <motion.div
+      animate={{
+        scale:[1,1.25,1],
+        opacity:[1,.5,1]
+      }}
+      transition={{
+        duration:2,
+        repeat:Infinity
+      }}
+      className="
+      w-3 h-3
+      rounded-full
+      bg-crimson
+      "
+    />
+
+    <span
+      className="
+      font-oswald
+      text-crimson
+      text-xs
+      tracking-[0.25em]
+      uppercase
+      "
+    >
+      HELLO
+    </span>
+
+  </div>
+
+  <p
+    className="
+    font-inter
+    text-sm
+    text-white/80
+    leading-relaxed
+    "
+  >
+   
+    welcome to my digital space.
+  </p>
+
+</motion.div>
         {/* Bottom Right: Action Button & Stamp */}
         <div className="absolute bottom-10 right-6 sm:bottom-12 sm:right-12 md:bottom-16 md:right-16 flex items-center gap-4 sm:gap-6 scale-75 sm:scale-100 origin-bottom-right pointer-events-auto">
           {/* <a href="#contact" className="group flex items-center gap-3 border border-white/30 bg-black/50 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none rounded-full px-6 py-2.5 hover:bg-white hover:text-black transition-all">
