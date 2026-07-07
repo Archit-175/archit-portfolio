@@ -8,6 +8,7 @@
   
   --font-oswald: "Oswald", sans-serif;
   --font-inter: "Inter", sans-serif;
+  --font-comic-shanns: "Comic Shanns", "Comic Sans MS", cursive;
 }
 
 /* ── Base Reset ── */
@@ -16,8 +17,13 @@
   
 }
 
+/* NOTE: `scroll-behavior: smooth` is intentionally omitted.
+   The sticky, full-screen hero (with `-mt-[100vh]` layering) plus the
+   many always-on framer-motion animations block/cancel the browser's
+   smooth-scroll animation, which left every in-page nav link jumping
+   back to the top. Instant anchor jumps are reliable and land correctly. */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -27,6 +33,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+/* Explicit fallback for the About-section display font (self-hosted Comic Shanns),
+   in case the @theme-derived utility isn't emitted. */
+.font-comic-shanns {
+  font-family: var(--font-comic-shanns), "Comic Sans MS", cursive;
 }
 
 /* ── Scrollbar – Cinematic Style ── */
@@ -63,4 +75,18 @@ a {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* ── Accessibility: honor prefers-reduced-motion ──
+   Neutralizes CSS animations/transitions site-wide. JS-driven Framer Motion
+   loops are additionally gated per-component via useReducedMotion(). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

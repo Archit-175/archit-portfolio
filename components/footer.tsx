@@ -7,6 +7,7 @@ FaInstagram,
 FaPhone,
 FaEnvelope
 } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 
 export default function Footer(){
 
@@ -53,6 +54,9 @@ export default function Footer(){
     {/* overlay */}
     <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-black/60" />
 
+    {/* blend the seam from the dark section above into the footer */}
+    <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#050505] to-transparent" />
+
   </div>
 
   {/* CONTENT */}
@@ -88,11 +92,12 @@ export default function Footer(){
           font-oswald
           font-bold
           uppercase
-          text-black
+          text-white
           text-4xl
           sm:text-5xl
           md:text-6xl
           leading-none
+          drop-shadow-[0_2px_24px_rgba(0,0,0,0.75)]
         "
       >
         LET’S BUILD
@@ -195,6 +200,28 @@ export default function Footer(){
             "
           >
             <FaGithub size={17} />
+          </a>
+
+          {/* LEETCODE */}
+          <a
+            href="https://leetcode.com/u/Archit-175/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              w-10 h-10
+              sm:w-12 sm:h-12
+              rounded-full
+              bg-white/10
+              border border-white/10
+              text-white
+              flex items-center justify-center
+              hover:bg-crimson
+              transition-all duration-300
+              hover:scale-110
+              backdrop-blur-md
+            "
+          >
+            <SiLeetcode size={16} />
           </a>
 
           {/* LINKEDIN */}

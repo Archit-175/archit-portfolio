@@ -21,10 +21,14 @@ export default function Navbar() {
         </div>
 
         {/* Center: Navigation Links (Desktop) */}
-        <div className="hidden lg:flex items-center gap-6 text-xs md:text-sm font-inter tracking-[0.2em] text-white/70 uppercase">
+        <div className="hidden lg:flex items-center gap-5 text-xs md:text-sm font-inter tracking-[0.2em] text-white/70 uppercase">
           <a href="#about" className="hover:text-crimson hover:-translate-y-0.5 transition-all duration-300">About</a>
           <span className="text-crimson/80">•</span>
-          <a href="#projects" className="hover:text-crimson hover:-translate-y-0.5 transition-all duration-300">Live Demo</a>
+          <a href="#projects" className="hover:text-crimson hover:-translate-y-0.5 transition-all duration-300">Work</a>
+          <span className="text-crimson/80">•</span>
+          <a href="#skills" className="hover:text-crimson hover:-translate-y-0.5 transition-all duration-300">Skills</a>
+          <span className="text-crimson/80">•</span>
+          <a href="#publications" className="hover:text-crimson hover:-translate-y-0.5 transition-all duration-300">Research</a>
           <span className="text-crimson/80">•</span>
           <a href="#leadership" className="hover:text-crimson hover:-translate-y-0.5 transition-all duration-300">Leadership</a>
           <span className="text-crimson/80">•</span>
@@ -33,9 +37,10 @@ export default function Navbar() {
 
         {/* Right: Actions */}
         <div className="flex items-center gap-4">
-          <a 
-            href="https://drive.google.com/file/d/1FWpmHjfhW7APTLKznhLiSUx78kEst1Rr/view?usp=sharing" 
+          <a
+            href="/archit-savaliya-resume.pdf"
             target="_blank"
+            download
             className="hidden sm:flex items-center justify-center gap-2 text-white hover:text-crimson hover:border-crimson hover:-translate-y-0.5 transition-all duration-300 border border-white/10 rounded-full px-4 py-2 text-sm font-inter tracking-widest uppercase shadow-lg hover:shadow-crimson/20"
           >
             <Download size={16} />
@@ -63,13 +68,17 @@ export default function Navbar() {
             className="fixed top-[60px] sm:top-[70px] left-0 w-full z-40 bg-black/90 backdrop-blur-xl border-b border-white/10 flex flex-col items-center py-6 lg:hidden shadow-2xl"
           >
             <a href="#about" onClick={() => setIsOpen(false)} className="w-full text-center py-4 text-white/80 hover:text-crimson hover:bg-white/5 font-inter tracking-[0.2em] uppercase text-sm transition-all">About</a>
-            <a href="#projects" onClick={() => setIsOpen(false)} className="w-full text-center py-4 text-white/80 hover:text-crimson hover:bg-white/5 font-inter tracking-[0.2em] uppercase text-sm transition-all">Live Demo</a>
+            <a href="#projects" onClick={() => setIsOpen(false)} className="w-full text-center py-4 text-white/80 hover:text-crimson hover:bg-white/5 font-inter tracking-[0.2em] uppercase text-sm transition-all">Work</a>
+            <a href="#skills" onClick={() => setIsOpen(false)} className="w-full text-center py-4 text-white/80 hover:text-crimson hover:bg-white/5 font-inter tracking-[0.2em] uppercase text-sm transition-all">Skills</a>
+            <a href="#live-demo" onClick={() => setIsOpen(false)} className="w-full text-center py-4 text-white/80 hover:text-crimson hover:bg-white/5 font-inter tracking-[0.2em] uppercase text-sm transition-all">Live Demo</a>
+            <a href="#publications" onClick={() => setIsOpen(false)} className="w-full text-center py-4 text-white/80 hover:text-crimson hover:bg-white/5 font-inter tracking-[0.2em] uppercase text-sm transition-all">Research</a>
             <a href="#leadership" onClick={() => setIsOpen(false)} className="w-full text-center py-4 text-white/80 hover:text-crimson hover:bg-white/5 font-inter tracking-[0.2em] uppercase text-sm transition-all">Leadership</a>
             <a href="#contact" onClick={() => setIsOpen(false)} className="w-full text-center py-4 text-white/80 hover:text-crimson hover:bg-white/5 font-inter tracking-[0.2em] uppercase text-sm transition-all">Contact</a>
-            
-            <a 
-              href="https://drive.google.com/file/d/1FWpmHjfhW7APTLKznhLiSUx78kEst1Rr/view?usp=sharing" 
+
+            <a
+              href="/archit-savaliya-resume.pdf"
               target="_blank"
+              download
               onClick={() => setIsOpen(false)}
               className="mt-6 flex items-center justify-center gap-2 text-white border border-white/20 rounded-full px-6 py-2.5 text-sm font-inter tracking-widest uppercase hover:bg-crimson hover:border-crimson hover:text-black transition-all"
             >

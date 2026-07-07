@@ -2,13 +2,15 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import SeamGlow from "@/components/SeamGlow";
 
 export default function LeadershipSection() {
   return (
     <section
       id="leadership"
-      className="relative py-20 sm:py-24 px-6 sm:px-12 md:px-20 lg:px-28 bg-black border-y border-white/5"
+      className="relative py-20 sm:py-24 px-6 sm:px-12 md:px-20 lg:px-28 bg-black"
     >
+      <SeamGlow bottom={false} />
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
@@ -70,7 +72,7 @@ export default function LeadershipSection() {
             </div>
 
             <p className="text-gray-400 text-sm leading-relaxed">
-              Led institute-level initiatives, execution, stakeholder coordination and student-centric improvements.
+              I lead institute-level initiatives: execution, stakeholder coordination and student-centric reforms across cultural and technical events.
             </p>
 
             <div className="mt-6 space-y-2 text-xs text-gray-500">
@@ -128,7 +130,7 @@ export default function LeadershipSection() {
             </div>
 
             <p className="text-gray-400 text-sm leading-relaxed">
-              Leading technical communities, workshops, hackathons and academic initiatives.
+              I run technical communities, organizing workshops, hackathons and coding events for students.
             </p>
 
             <div className="mt-6 space-y-2 text-xs text-gray-500">
@@ -167,7 +169,7 @@ export default function LeadershipSection() {
                 </div>
 
                 <h3 className="font-oswald text-2xl uppercase leading-none group-hover:text-crimson transition-colors">
-                  Core Member
+                  Manager
                 </h3>
 
                 <p className="text-gray-500 uppercase text-xs tracking-widest mt-2">
@@ -187,7 +189,7 @@ export default function LeadershipSection() {
             </div>
 
             <p className="text-gray-400 text-sm leading-relaxed">
-              Finance, logistics, sponsorship, hospitality and execution for Gujarat’s largest techno-managerial fest.
+              I own finance, logistics and sponsorship for Gujarat’s largest techno-managerial fest, from a member role in 2024-25 to leading the meets and operations.
             </p>
 
             <div className="grid grid-cols-3 gap-4 mt-6">
@@ -270,7 +272,7 @@ export default function LeadershipSection() {
               </div>
 
               <p className="text-sm text-gray-400 leading-relaxed">
-                Managed logistics, stakeholder coordination and media operations.
+                I managed logistics, stakeholder coordination and media operations for the MUN.
               </p>
 
             </div>
@@ -302,7 +304,7 @@ export default function LeadershipSection() {
               </div>
 
               <p className="text-sm text-gray-400 leading-relaxed">
-                Coordinated awareness and outreach initiatives under BIS.
+                I coordinate awareness and outreach initiatives under the BIS student chapter.
               </p>
 
             </div>
@@ -334,7 +336,7 @@ export default function LeadershipSection() {
               </div>
 
               <p className="text-sm text-gray-400 leading-relaxed">
-                Represented students and coordinated with faculty and TNP.
+                I represent students, coordinate with faculty &amp; TNP, and kick-started our AI department&apos;s placement (CDC) team, as the first AI batch had none.
               </p>
 
             </div>

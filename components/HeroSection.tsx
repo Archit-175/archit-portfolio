@@ -1,373 +1,149 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
 export default function HeroSection() {
-  const wrapperRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: wrapperRef,
-    offset: ["start start", "end start"],
-  });
+  const reduce = useReducedMotion();
 
-  const { scrollY } = useScroll(); // Global scroll
-  
-  // Background elements move up slower than the page scroll
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
-  const rolesY = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
-  const circleY = useTransform(scrollYProgress, [0, 1], ["0", "-40%"]);
-  // Figure moves naturally with document flow (no transform)
   return (
-    <div ref={wrapperRef}>
-      {/* Sticky Background — stays pinned while content scrolls over it */}
-      <section className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#050505] z-0">
-        {/* Top Roles Text */}
-        <motion.div 
-          style={{ y: rolesY }}
-          className="absolute top-[90px] md:top-[40px] w-full px-6 sm:px-12 md:px-16 z-20 flex flex-col md:flex-row items-center md:justify-between text-white/80 font-oswald text-[10px] md:text-lg tracking-[0.1em] md:tracking-[0.2em] uppercase border-t border-white/10 pt-4 gap-2 md:gap-0"
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#050505]">
+      {/* ── Figure on the right ── */}
+      <div className="pointer-events-none absolute bottom-0 right-0 z-0 hidden h-[90vh] w-[52vw] lg:block xl:w-[48vw]">
+        {/* crimson aura */}
+        <motion.div
+          animate={reduce ? undefined : { scale: [1, 1.08, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-16 left-1/2 h-[38%] w-[70%] -translate-x-1/2 rounded-full bg-crimson opacity-40 blur-[120px]"
+        />
+        <motion.div
+          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 60, scale: 0.94 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="relative h-full w-full"
         >
-          <div className="flex items-center gap-2 md:contents">
-            <span>AI SYSTEMS</span>
-            <span className="text-crimson">----</span>
-            <span>PRODUCT THINKING</span>
-          </div>
-          <span className="text-crimson hidden md:inline">----</span>
-          <div className="flex items-center gap-2 md:contents">
-            <span>PRODUCT MANAGEMENT</span>
-            <span className="text-crimson">----</span>
-            <span>WORKFLOW AUTOMATION</span>
-          </div>
+          <Image
+            src="/archit.svg"
+            alt="Archit Savaliya"
+            fill
+            priority
+            sizes="50vw"
+            className="object-contain object-bottom drop-shadow-[0_30px_80px_rgba(0,0,0,0.9)]"
+          />
         </motion.div>
- 
+      </div>
 
-        {/* Massive Background Typography */}
-{/* Massive Background Typography */}
-<motion.div
-  initial={{
-    opacity: 0,
-    scale: 0.9,
-    filter: "blur(10px)"
-  }}
-  animate={{
-    opacity: 1,
-    scale: 1,
-    filter: "blur(0px)"
-  }}
-  transition={{
-    duration: 1.2,
-    ease: "easeOut"
-  }}
-  style={{ y: textY }}
-  className="
-  absolute
-  top-[38%]
-  md:top-1/2
-  left-1/2
-  -translate-x-1/2
-  -translate-y-1/2
-  z-10
-  w-full
-  text-center
-  pointer-events-none
-  overflow-hidden
-"
->
-  <div className="relative inline-block">
+      {/* Readability scrims */}
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#050505] via-[#050505]/85 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-40 bg-gradient-to-t from-[#050505] to-transparent" />
 
-    {/* crimson glow */}
-    <motion.div
-      initial={{
-        opacity: 0,
-        scale: .7
-      }}
-      animate={{
-        opacity: 1,
-        scale: 1
-      }}
-      transition={{
-        duration: 1.2
-      }}
-      className="
-      absolute
-      inset-0
-    
-      blur-[90px]
-      rounded-full
-      "
-    />
-
-    {/* left → right reveal */}
-    <motion.div
-      initial={{
-        width: "0%"
-      }}
-      animate={{
-        width: "100%"
-      }}
-      transition={{
-        duration: 1.4,
-        ease: [0.22,1,0.36,1]
-      }}
-      className="
-      overflow-hidden
-      mx-auto
-      "
-    >
-
-      <motion.h1
-        initial={{
-          opacity: 0,
-          x: -120
-        }}
-        animate={{
-          opacity: 1,
-          x: 0
-        }}
-        transition={{
-          duration: 1.2
-        }}
-        className="
-        font-oswald
-        text-[22vw]
-        sm:text-[20vw]
-        md:text-[24vw]
-        lg:text-[28vw]
-        leading-none
-        font-bold
-        tracking-tighter
-        text-white
-        drop-shadow-2xl
-        select-none
-        whitespace-nowrap
-        "
-      >
-        &lt;ARCHIT&gt;
-      </motion.h1>
-
-      {/* scan line */}
-      <motion.div
-        animate={{
-          x: ["-100%", "120%"]
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "linear"
-        }}
-        className="
-        absolute
-        top-1/2
-        left-0
-        w-full
-        h-[3px]
-        bg-gradient-to-r
-        from-transparent
-        via-red-500
-        to-transparent
-        blur-sm
-        opacity-70
-        "
-      />
-
-    </motion.div>
-
-  </div>
-</motion.div>
-
-      </section>
-
-      {/* Scrolling Foreground — figure moves with natural page scroll to stay attached to AboutSection */}
-<div className="
-relative
-z-10
--mt-[100vh]
-h-screen
-w-full
-pointer-events-none
-flex
-justify-center
-"
->
-  <motion.div
-    initial={{
-      opacity:0,
-      y:180,
-      scale:.85,
-      rotate:-4,
-      filter:"blur(10px)"
-    }}
-    animate={{
-      opacity:1,
-      y:0,
-      scale:1,
-      rotate:0,
-      filter:"blur(0px)"
-    }}
-    transition={{
-      duration:1.4,
-      ease:[0.22,1,0.36,1]
-    }}
-    className="
-    absolute
-    bottom-0
-    w-full
-    max-w-[600px]
-    md:max-w-[800px]
-    h-[85vh]
-    "
-  >
-
-    {/* crimson aura */}
-    <motion.div
-      animate={{
-        scale:[1,1.08,1],
-        opacity:[.35,.55,.35]
-      }}
-      transition={{
-        duration:4,
-        repeat:Infinity,
-        ease:"easeInOut"
-      }}
-      className="
-      absolute
-      bottom-10
-      left-1/2
-      -translate-x-1/2
-      w-[70%]
-      h-[35%]
-      bg-crimson
-      blur-[120px]
-      rounded-full
-      opacity-40
-      "
-    />
-
-    {/* floating image */}
-    <motion.div
-    
-      className="relative w-full h-full"
-    >
-      <Image
-        src="/archit.svg"
-        alt="Archit Savaliya Silhouette"
-        fill
-        priority
-        className="
-        object-contain
-        object-bottom
-        drop-shadow-[0_30px_80px_rgba(0,0,0,0.95)]
-        "
-        sizes="(max-width:768px)100vw,50vw"
-      />
-    </motion.div>
-
-  </motion.div>
-</div>
-
-      {/* Sticky UI — pinned ON TOP of both background and scrolling figure */}
-      <div className="sticky top-0 h-screen w-full pointer-events-none z-20 -mt-[100vh]">
-        {/* Bottom Left: Bio Block */}
-<motion.div
-  initial={{
-    opacity: 0,
-    x: -60,
-    y: 30
-  }}
-  animate={{
-    opacity: 1,
-    x: 0,
-    y: [0, -4, 0]
-  }}
-  transition={{
-    opacity: { duration: 1, delay: 0.5 },
-    x: {
-      duration: 1,
-      delay: 0.5,
-      ease: [0.22, 1, 0.36, 1]
-    },
-    y: {
-      duration: 4,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }
-  }}
-  className="
-  absolute
-  bottom-14
-  left-8
-  md:left-16
-
-  max-w-[300px]
-
-  pointer-events-auto
-"
->
-
-  <div className="flex items-center gap-3 mb-3">
-
-    <motion.div
-      animate={{
-        scale:[1,1.25,1],
-        opacity:[1,.5,1]
-      }}
-      transition={{
-        duration:2,
-        repeat:Infinity
-      }}
-      className="
-      w-3 h-3
-      rounded-full
-      bg-crimson
-      "
-    />
-
-    <span
-      className="
-      font-oswald
-      text-crimson
-      text-xs
-      tracking-[0.25em]
-      uppercase
-      "
-    >
-      HELLO
-    </span>
-
-  </div>
-
-  <p
-    className="
-    font-inter
-    text-sm
-    text-white/80
-    leading-relaxed
-    "
-  >
-   
-    welcome to my digital space.
-  </p>
-
-</motion.div>
-        {/* Bottom Right: Action Button & Stamp */}
-        <div className="absolute bottom-10 right-6 sm:bottom-12 sm:right-12 md:bottom-16 md:right-16 flex items-center gap-4 sm:gap-6 scale-75 sm:scale-100 origin-bottom-right pointer-events-auto">
-          {/* <a href="#contact" className="group flex items-center gap-3 border border-white/30 bg-black/50 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none rounded-full px-6 py-2.5 hover:bg-white hover:text-black transition-all">
-            <span className="font-inter text-sm tracking-widest uppercase font-semibold whitespace-nowrap">Connect Now</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
-          </a> */}
-          
-          {/* Red Stamp / Seal */}
-          <div className="w-16 h-16 rounded-full border-2 border-crimson overflow-hidden shadow-lg bg-black">
-            <Image
-              src="/Deadpool-logo.png"
-              alt="Stamp"
-              width={160}
-              height={160}
-              className="object-cover scale-160 object-center translate-y-3"
-            />
-          </div>
+      {/* ── Top roles line ── */}
+      <div className="absolute left-0 top-[76px] z-20 flex w-full flex-col items-center gap-2 border-t border-white/10 px-6 pt-4 font-oswald text-[10px] uppercase tracking-[0.1em] text-white/70 sm:px-12 md:top-[64px] md:flex-row md:justify-between md:text-sm md:tracking-[0.2em]">
+        <div className="flex items-center gap-2 md:contents">
+          <span>AI Systems</span>
+          <span className="text-crimson">----</span>
+          <span>Product Thinking</span>
+        </div>
+        <span className="hidden text-crimson md:inline">----</span>
+        <div className="flex items-center gap-2 md:contents">
+          <span>Data & Analytics</span>
+          <span className="text-crimson">----</span>
+          <span>Full-Stack</span>
         </div>
       </div>
-    </div>
+
+      {/* ── Content ── */}
+      <div className="relative z-20 flex min-h-screen items-center px-6 sm:px-12 md:px-16 lg:px-28">
+        <div className="max-w-2xl">
+          <motion.div
+            initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-5 flex items-center gap-3"
+          >
+            <motion.span
+              animate={reduce ? undefined : { opacity: [1, 0.4, 1], scale: [1, 1.25, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="h-2.5 w-2.5 rounded-full bg-crimson"
+            />
+            <span className="font-oswald text-xs uppercase tracking-[0.25em] text-white/70">
+              Hi, I&apos;m
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            className="font-oswald text-6xl font-bold uppercase leading-[0.9] tracking-tighter text-white sm:text-7xl md:text-8xl"
+          >
+            Archit
+            <br />
+            <span className="text-crimson">Savaliya</span>
+          </motion.h1>
+
+          <motion.p
+            initial={reduce ? { opacity: 0 } : { opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.35 }}
+            className="mt-6 font-oswald text-xl uppercase tracking-wide text-white/90 sm:text-2xl md:text-3xl"
+          >
+            AI &amp; Product Builder.{" "}
+            <span className="text-white/60">I ship real systems.</span>
+          </motion.p>
+
+          <motion.p
+            initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-5 max-w-xl font-inter text-sm leading-relaxed text-white/55 md:text-base"
+          >
+            Final-year AI student at SVNIT Surat. I build AI-driven products, lead teams, and turn
+            messy real-world problems into things people actually use.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.65 }}
+            className="mt-9 flex flex-wrap items-center gap-4"
+          >
+            <a
+              href="#projects"
+              className="rounded-full bg-crimson px-7 py-3 font-inter text-sm font-semibold uppercase tracking-widest text-white transition-transform hover:-translate-y-0.5"
+            >
+              View Work
+            </a>
+            <a
+              href="/archit-savaliya-resume.pdf"
+              target="_blank"
+              download
+              className="rounded-full border border-white/25 px-7 py-3 font-inter text-sm uppercase tracking-widest text-white transition-colors hover:border-crimson hover:text-crimson"
+            >
+              Résumé
+            </a>
+            <a
+              href="#contact"
+              className="rounded-full border border-white/25 px-7 py-3 font-inter text-sm uppercase tracking-widest text-white transition-colors hover:border-crimson hover:text-crimson"
+            >
+              Contact
+            </a>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Scroll cue */}
+      <div className="absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 md:block">
+        <motion.div
+          animate={reduce ? undefined : { y: [0, 8, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-1 text-white/40"
+        >
+          <span className="font-inter text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+          <span className="text-lg">↓</span>
+        </motion.div>
+      </div>
+    </section>
   );
 }

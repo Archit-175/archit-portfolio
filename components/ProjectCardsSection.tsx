@@ -1,512 +1,142 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { HiOutlineDocumentText } from "react-icons/hi";
-import { useRef } from "react";
-
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { useMemo, useState } from "react";
+import { FiChevronDown } from "react-icons/fi";
+import ProjectCard from "@/components/ProjectCard";
+import SeamGlow from "@/components/SeamGlow";
 import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaNodeJs,
-  FaPython,
-  FaReact,
-  FaDatabase,
-  FaGithub,
-  FaBrain,
-  FaCloud,
-} from "react-icons/fa";
-
-import {
-  SiMongodb,
-  SiTensorflow,
-  SiPytorch,
-  SiOpencv,
-} from "react-icons/si";
-
-import { Layers3, Cpu } from "lucide-react";
-
-const projects = [
-  {
-    name: "SAMPARK",
-    category: "Workflow Automation",
-    description:
-      "Institutional workflow platform designed to digitize approvals, streamline coordination, and centralize administrative processes.",
-    color: "bg-crimson",
-    textColor: "text-white",
-    // github: "#",
-  },
-
-  {
-    name: "EEG Emotion",
-    category: "Adaptive AI Systems",
-    description:
-      "Subject-independent EEG emotion recognition system using reinforcement learning and domain adaptation techniques.",
-    color: "bg-black",
-    textColor: "text-white",
-    border: "border-white/10",
-    github: "https://github.com/Archit-175/EEG-Emotion-Recognition-RL",
-    paper: "https://drive.google.com/file/d/1Zs-Phj2G10crf564G2ZLi1PqpycFY28y/preview",
-  },
-
-{
-  name: "Kidney Segmentation",
-  category: "Medical AI",
-  description:
-    "Uncertainty-aware kidney tumor segmentation system for AI-assisted clinical decision support.",
-  color: "bg-[#5A1122]",
-  textColor: "text-white",
-  border: "border-red-400/20",
-  github: "https://github.com/Archit-175/KidneyTumorSegmentation-ARUGD",
-  paper: "https://drive.google.com/file/d/1ucTMprid8-kiHZHOUj5dqHAMaX5TwkIc/preview",
-},
-
-{
-  name: "Crawlers",
-  category: "Interactive Platform",
-  description:
-    "Environmental exploration platform featuring immersive navigation, dynamic content systems, and engagement tools.",
-  color: "bg-[rgba(155,27,48,0.12)]",
-  textColor: "text-black",
-  border: "border-[crimson/20]",
-  github: "https://github.com/Archit-175/Crawlers",
-},
-  {
-    name: "Pneumonia Detection",
-    category: "Medical Imaging",
-    description:
-      "CNN-based chest X-ray classification system developed for accessible AI-assisted pneumonia detection.",
-    color: "bg-[#111]",
-    textColor: "text-white",
-    border: "border-white/10",
-    github: "https://github.com/Diya5772/pneumonia-detection",
-    paper: "https://drive.google.com/file/d/1XV5Z1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q1/preview",
-  },
-
-  {
-    name: "Credit Risk Prediction",
-    category: "Predictive Analytics",
-    description:
-      "Customer behavior prediction model designed to identify high-risk credit card defaulters using deep learning.",
-    color: "bg-gray-200",
-    textColor: "text-black",
-    border: "border-black/10",
-    github: "https://github.com/Nilangbhuva/Convolve",
-  },
-
-  {
-    name: "Financial Sentiment",
-    category: "NLP Systems",
-    description:
-      "Market intelligence system integrating financial sentiment analysis with predictive stock movement modeling.",
-    color: "bg-black",
-    textColor: "text-white",
-    border: "border-white/10",
-    // github: "#",
-  },
-];
+  featuredProjects,
+  moreProjects,
+  themeFilters,
+  type Theme,
+} from "@/data/projects";
 
 export default function ProjectCardsSection() {
-  const ref = useRef(null);
+  const reduce = useReducedMotion();
+  const [filter, setFilter] = useState<"All" | Theme>("All");
+  const [showMore, setShowMore] = useState(false);
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+  const byFilter = <T extends { theme: Theme }>(list: T[]) =>
+    filter === "All" ? list : list.filter((p) => p.theme === filter);
 
-  // Cinematic staggered parallax (scaled down for mobile stability)
-  const y1 = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [110, -110]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const y4 = useTransform(scrollYProgress, [0, 1], [90, -90]);
-  const y5 = useTransform(scrollYProgress, [0, 1], [30, -30]);
-  const y6 = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const y7 = useTransform(scrollYProgress, [0, 1], [50, -50]);
-
-  const transforms = [y1, y2, y3, y4, y5, y6, y7];
+  const featured = useMemo(() => byFilter(featuredProjects), [filter]);
+  const more = useMemo(() => byFilter(moreProjects), [filter]);
 
   return (
     <section
       id="projects"
-      ref={ref}
-      className="relative min-h-[145vh] bg-white py-10 overflow-hidden border-t border-black/10"
+      className="relative overflow-hidden bg-black py-20 sm:py-24 px-6 sm:px-12 md:px-20 lg:px-28"
     >
-      {/* Background Typography */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none overflow-hidden">
+      <SeamGlow />
+      {/* Background wordmark */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
         <h2
-          className="font-oswald text-[20vw] font-bold uppercase text-transparent"
-          style={{
-            WebkitTextStroke: "2px rgba(0,0,0,0.15)",
-          }}
+          className="font-oswald text-[22vw] font-bold uppercase text-transparent opacity-[0.03]"
+          style={{ WebkitTextStroke: "2px rgba(255,255,255,0.4)" }}
         >
-          SYSTEMS
+          BUILD
         </h2>
       </div>
 
-      {/* Ambient Glow */}
-      <div className="absolute top-0 left-0 w-full h-[22vh] bg-[radial-gradient(circle_at_top,rgba(155,27,48,0.12),transparent_70%)] pointer-events-none" />
-{/* Floating Border Atmosphere */}
-<div className="absolute inset-0 overflow-hidden pointer-events-none z-[1] hidden md:block">
-
-  {/* Python */}
-  <motion.div
-    animate={{
-      x: [0, 140, -90, 0],
-      y: [0, -160, 100, 0],
-      rotate: [0, 18, -10, 0],
-      scale: [1, 1.08, 0.94, 1],
-    }}
-    transition={{
-      duration: 38,
-      repeat: Infinity,
-      repeatType: "mirror",
-      ease: "easeInOut",
-    }}
-    className="absolute top-[8%] left-[-2%]"
-  >
-    <FaPython className="text-[160px] text-black/[0.08]" />
-  </motion.div>
-
-  {/* TensorFlow */}
-  <motion.div
-    animate={{
-      x: [0, -150, 90, 0],
-      y: [0, 140, -100, 0],
-      rotate: [0, -20, 12, 0],
-      scale: [1, 0.94, 1.06, 1],
-    }}
-    transition={{
-      duration: 42,
-      repeat: Infinity,
-      repeatType: "mirror",
-      ease: "easeInOut",
-    }}
-    className="absolute top-[6%] right-[-3%]"
-  >
-    <SiTensorflow className="text-[150px] text-red-500/[0.08]" />
-  </motion.div>
-
-  {/* React */}
-  <motion.div
-    animate={{
-      x: [0, 120, -140, 0],
-      y: [0, -180, 110, 0],
-      rotate: [0, 22, -14, 0],
-      scale: [1, 1.1, 0.92, 1],
-    }}
-    transition={{
-      duration: 46,
-      repeat: Infinity,
-      repeatType: "mirror",
-      ease: "easeInOut",
-    }}
-    className="absolute top-[35%] left-[-4%]"
-  >
-    <FaReact className="text-[180px] text-cyan-500/[0.08]" />
-  </motion.div>
-
-  {/* PyTorch */}
-  <motion.div
-    animate={{
-      x: [0, -130, 150, 0],
-      y: [0, 160, -100, 0],
-      rotate: [0, -18, 15, 0],
-      scale: [1, 1.08, 0.93, 1],
-    }}
-    transition={{
-      duration: 44,
-      repeat: Infinity,
-      repeatType: "mirror",
-      ease: "easeInOut",
-    }}
-    className="absolute top-[38%] right-[-4%]"
-  >
-    <SiPytorch className="text-[150px] text-red-400/[0.08]" />
-  </motion.div>
-
-  {/* NodeJS */}
-  <motion.div
-    animate={{
-      x: [0, 150, -80, 0],
-      y: [0, -140, 120, 0],
-      rotate: [0, 16, -12, 0],
-      scale: [1, 1.06, 0.94, 1],
-    }}
-    transition={{
-      duration: 40,
-      repeat: Infinity,
-      repeatType: "mirror",
-      ease: "easeInOut",
-    }}
-    className="absolute bottom-[18%] left-[-2%]"
-  >
-    <FaNodeJs className="text-[170px] text-green-600/[0.08]" />
-  </motion.div>
-
-  {/* MongoDB */}
-  <motion.div
-    animate={{
-      x: [0, -140, 100, 0],
-      y: [0, 150, -120, 0],
-      rotate: [0, -20, 14, 0],
-      scale: [1, 1.08, 0.92, 1],
-    }}
-    transition={{
-      duration: 48,
-      repeat: Infinity,
-      repeatType: "mirror",
-      ease: "easeInOut",
-    }}
-    className="absolute bottom-[12%] right-[-2%]"
-  >
-    <SiMongodb className="text-[180px] text-green-700/[0.08]" />
-  </motion.div>
-
-  {/* CPU */}
-  <motion.div
-    animate={{
-      x: [0, 120, -90, 0],
-      y: [0, -160, 80, 0],
-      rotate: [0, 18, -10, 0],
-      scale: [1, 1.06, 0.94, 1],
-    }}
-    transition={{
-      duration: 41,
-      repeat: Infinity,
-      repeatType: "mirror",
-      ease: "easeInOut",
-    }}
-    className="absolute bottom-[4%] left-[28%]"
-  >
-    <Cpu className="w-40 h-40 text-black/[0.08]" />
-  </motion.div>
-
-  {/* Brain */}
-  <motion.div
-    animate={{
-      x: [0, -130, 160, 0],
-      y: [0, 180, -100, 0],
-      rotate: [0, 24, -16, 0],
-      scale: [1, 1.12, 0.9, 1],
-    }}
-    transition={{
-      duration: 50,
-      repeat: Infinity,
-      repeatType: "mirror",
-      ease: "easeInOut",
-    }}
-    className="absolute top-[12%] left-[38%]"
-  >
-    <FaBrain className="text-[170px] text-crimson/10" />
-  </motion.div>
-
-  {/* Layers */}
-  <motion.div
-    animate={{
-      x: [0, 140, -110, 0],
-      y: [0, -150, 100, 0],
-      rotate: [0, -16, 12, 0],
-      scale: [1, 1.05, 0.95, 1],
-    }}
-    transition={{
-      duration: 43,
-      repeat: Infinity,
-      repeatType: "mirror",
-      ease: "easeInOut",
-    }}
-    className="absolute bottom-[2%] right-[32%]"
-  >
-    <Layers3 className="w-40 h-40 text-black/[0.08]" />
-  </motion.div>
-
-</div>
-      {/* Section Heading */}
-      <div className="absolute top-14 w-full h-[16vh] text-center z-20 pointer-events-none">
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* Heading */}
+        <motion.div
+          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40 }}
+          whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-oswald text-5xl md:text-7xl font-bold uppercase tracking-wider text-black"
+          className="mb-10"
         >
-          SYSTEMS <span className="text-crimson">BUILT</span>
-        </motion.h2>
+          <p className="mb-4 font-inter text-sm uppercase tracking-[0.2em] text-crimson">
+            Selected work
+          </p>
+          <h2 className="font-oswald text-4xl font-bold uppercase leading-none tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+            SYSTEMS <span className="text-white/20">I&apos;VE BUILT</span>
+          </h2>
+          <p className="mt-5 max-w-2xl font-inter text-sm leading-relaxed text-white/50 md:text-base">
+            Products I&apos;ve shipped, research I&apos;ve contributed to, and web things I&apos;ve
+            led, grouped by what they are. Each card has the honest role I played.
+          </p>
+        </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="mt-6 text-black/60 font-inter text-sm md:text-base tracking-wide uppercase"
-        >
-          Intelligent platforms • scalable workflows • adaptive systems
-        </motion.p>
-      </div>
-
-      {/* Cinematic Floating Layout */}
-      <div className="max-w-[1600px] mx-auto relative z-10 pt-40 md:pt-54 px-8 md:px-20 pb-20">
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-14 place-items-center">
-
-          {projects.map((project, idx) => {
-
-            // Desktop manual stagger to enhance the parallax look
-            const staggerClasses = [
-              "md:mt-10",
-              "md:mt-0",
-              "md:mt-20",
-              "md:-mt-10",
-              "md:mt-5",
-              "md:mt-16",
-              "md:-mt-4"
-            ];
-
+        {/* Filter chips */}
+        <div className="mb-10 flex flex-wrap gap-2.5">
+          {themeFilters.map((f) => {
+            const active = filter === f;
             return (
-              <motion.div
-                key={idx}
-                style={{
-                  y: transforms[idx],
-                }}
-
-                initial={{
-                  opacity: 0,
-                  y: 100,
-                }}
-
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-
-                viewport={{ once: true, margin: "-50px" }}
-
-                transition={{
-                  duration: 0.8,
-                  ease: [0.22, 1, 0.36, 1],
-                  delay: (idx % 4) * 0.1,
-                }}
-
-                whileHover={{
-                  y: -10,
-                  scale: 1.02,
-                  rotateX: -2,
-                  rotateY: idx % 2 === 0 ? 2 : -2,
-                }}
-
-                className={`relative group w-full max-w-[288px] h-96 ${staggerClasses[idx]}`}
+              <button
+                key={f}
+                type="button"
+                onClick={() => setFilter(f)}
+                className={`rounded-full border px-4 py-1.5 font-inter text-xs uppercase tracking-[0.15em] transition-colors focus-visible:outline-none ${
+                  active
+                    ? "border-crimson bg-crimson text-white"
+                    : "border-white/15 text-white/60 hover:border-crimson/50 hover:text-white"
+                }`}
               >
-
-                {/* Glow */}
-                <div
-                  className={`absolute -inset-4 blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700 ${
-                    project.color === "bg-crimson"
-                      ? "bg-crimson/25"
-                      : "bg-black/10"
-                  }`}
-                />
-
-                {/* Floating Border Glow */}
-                <motion.div
-                  animate={{
-                    opacity: [0.1, 0.25, 0.1],
-                    scale: [1, 1.03, 1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0 rounded-2xl border border-white/5 pointer-events-none"
-                />
-
-                {/* Card */}
-                <div
-                  className={`relative w-full h-full ${project.color} ${
-                    project.border ? `border ${project.border}` : ""
-                  } rounded-2xl p-8 flex flex-col justify-between overflow-hidden shadow-[0_30px_120px_rgba(0,0,0,0.18)] transition-all duration-500`}
-                >
-
-                  {/* Accent */}
-                  <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-50" />
-
-                  {/* Top */}
-                  <div className="relative z-10">
-                    <span
-                      className={`font-inter text-[10px] tracking-[0.32em] uppercase font-semibold opacity-60 ${project.textColor}`}
-                    >
-                      {project.category}
-                    </span>
-
-                    <h3
-                      className={`font-oswald text-3xl font-bold uppercase mt-5 leading-tight ${project.textColor}`}
-                    >
-                      {project.name}
-                    </h3>
-                  </div>
-
-                  {/* Bottom */}
-                  <div className="relative z-10">
-                    <p
-                      className={`font-inter text-[15px] leading-relaxed opacity-75 ${project.textColor}`}
-                    >
-                      {project.description}
-                    </p>
-
-                    {/* Action Links */}
-                    <div className="flex items-center gap-4 mb-6">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`transition-all duration-300 hover:scale-110 ${
-                            project.textColor === "text-white"
-                              ? "text-white/70 hover:text-white"
-                              : "text-black/60 hover:text-black"
-                          }`}
-                        >
-                          <FaGithub size={20} />
-                        </a>
-                      )}
-                      {project.paper && (
-                        <a
-                          href={project.paper}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`transition-all duration-300 hover:scale-110 ${
-                            project.textColor === "text-white"
-                              ? "text-white/70 hover:text-white"
-                              : "text-black/60 hover:text-black"
-                          }`}
-                        >
-                          <HiOutlineDocumentText size={22} />
-                        </a>
-                      )}
-                      
-                      <div
-                        className={`w-2 h-2 rounded-full ${
-                          project.textColor === "text-white"
-                            ? "bg-white"
-                            : "bg-black"
-                        }`}
-                      />
-
-                      <div
-                        className={`h-[1px] flex-1 ${
-                          project.textColor === "text-white"
-                            ? "bg-white/20"
-                            : "bg-black/20"
-                        }`}
-                      />
-                    </div>
-                  </div>
-
-                </div>
-              </motion.div>
+                {f}
+              </button>
             );
           })}
-
         </div>
+
+        {/* Featured grid: 2 per row */}
+        <motion.div layout className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <AnimatePresence mode="popLayout">
+            {featured.map((p, i) => (
+              <ProjectCard key={p.id} project={p} index={i} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {featured.length === 0 && (
+          <p className="py-10 text-center font-inter text-sm text-white/40">
+            Nothing featured in this group. Try “See more”.
+          </p>
+        )}
+
+        {/* See more */}
+        <AnimatePresence initial={false}>
+          {showMore && more.length > 0 && (
+            <motion.div
+              initial={reduce ? { opacity: 0 } : { opacity: 0, height: 0 }}
+              animate={reduce ? { opacity: 1 } : { opacity: 1, height: "auto" }}
+              exit={reduce ? { opacity: 0 } : { opacity: 0, height: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="mt-8 flex items-center gap-4">
+                <span className="font-oswald text-sm uppercase tracking-[0.2em] text-white/40">
+                  More builds
+                </span>
+                <span className="h-px flex-1 bg-white/10" />
+              </div>
+              <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+                {more.map((p, i) => (
+                  <ProjectCard key={p.id} project={p} index={i} />
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {more.length > 0 && (
+          <div className="mt-12 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowMore((s) => !s)}
+              aria-expanded={showMore}
+              className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 font-inter text-xs uppercase tracking-[0.2em] text-white/70 transition-colors hover:border-crimson hover:text-white"
+            >
+              {showMore ? "Show less" : `See more (${more.length})`}
+              <FiChevronDown
+                className={`transition-transform duration-300 ${showMore ? "rotate-180" : ""}`}
+                size={15}
+              />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
