@@ -17,11 +17,17 @@ export default function ProjectCardsSection() {
   const [filter, setFilter] = useState<"All" | Theme>("All");
   const [showMore, setShowMore] = useState(false);
 
+  const isAll = filter === "All";
   const byFilter = <T extends { theme: Theme }>(list: T[]) =>
-    filter === "All" ? list : list.filter((p) => p.theme === filter);
+    isAll ? list : list.filter((p) => p.theme === filter);
 
-  const featured = useMemo(() => byFilter(featuredProjects), [filter]);
-  const more = useMemo(() => byFilter(moreProjects), [filter]);
+  // Under "All" we keep the featured / see-more split. Under a specific theme,
+  // everything in that theme shows at once so filters never land on an empty grid.
+  const featured = useMemo(
+    () => (isAll ? byFilter(featuredProjects) : byFilter([...featuredProjects, ...moreProjects])),
+    [filter]
+  );
+  const more = useMemo(() => (isAll ? moreProjects : []), [filter]);
 
   return (
     <section

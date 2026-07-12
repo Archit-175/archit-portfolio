@@ -216,6 +216,34 @@ export const projects: Project[] = [
     links: { github: "https://github.com/Archit-175/Financial-Sentiment-Analysis-" },
   },
   {
+    id: "sql-warehouse",
+    name: "SQL Data Warehouse",
+    theme: "Systems",
+    role: "Solo · learning project",
+    blurb:
+      "An end-to-end SQL Server data warehouse I built to learn data engineering: Bronze → Silver → Gold medallion ETL.",
+    details:
+      "A hands-on data-engineering build (Data with Baraa curriculum): I ingest CRM + ERP CSV sources into a three-layer medallion architecture on SQL Server, cleaning and standardizing data through stored-procedure ETL, and model it into a Star Schema (dim_customers, dim_products, fact_sales) ready for analytics. Includes quality-check scripts, a data catalog, and naming conventions.",
+    tech: ["SQL Server", "T-SQL", "Medallion Architecture", "Star Schema", "Stored Procedures", "Docker"],
+    outcome: "Solo learning build · full ETL pipeline.",
+    featured: false,
+    links: { github: "https://github.com/Archit-175/SQL-Data-WareHouseProject" },
+  },
+  {
+    id: "sql-analytics",
+    name: "SQL Data Analytics",
+    theme: "Systems",
+    role: "Solo · learning project",
+    blurb:
+      "14 T-SQL analytics scripts on a retail warehouse: exploration, ranking, time-series, segmentation, and reporting.",
+    details:
+      "A companion analytics project on top of the Gold-layer Star Schema (Data with Baraa curriculum): I wrote 14 T-SQL scripts covering database/dimension exploration, magnitude and ranking analysis, change-over-time and cumulative trends, performance and data segmentation, part-to-whole analysis, and final customer & product reports.",
+    tech: ["SQL Server", "T-SQL", "Window Functions", "CTEs", "Analytics", "Docker"],
+    outcome: "Solo learning build · 14 analytics scripts.",
+    featured: false,
+    links: { github: "https://github.com/Archit-175/Data-Analytics-Project-Learning" },
+  },
+  {
     id: "parallel-search",
     name: "Parallel Search",
     theme: "Systems",
@@ -233,5 +261,5 @@ export const projects: Project[] = [
 export const featuredProjects = projects.filter((p) => p.featured);
 export const moreProjects = projects.filter((p) => !p.featured);
 
-/** Filter chips shown above the grid. "Systems" items surface only under "All". */
-export const themeFilters: Array<"All" | Theme> = ["All", "Products", "AI-ML", "Web"];
+/** Filter chips shown above the grid. */
+export const themeFilters: Array<"All" | Theme> = ["All", "Products", "AI-ML", "Web", "Systems"];

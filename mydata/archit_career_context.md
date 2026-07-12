@@ -922,6 +922,42 @@
   4. You feature four ML projects on this card (EEG D3QN+CNN, U-Net kidney segmentation, CNN pneumonia detection). Pick one and explain the actual model architecture and results behind the one-liner.
   5. GitHub sanitizes README HTML and proxies images through Camo — how does that affect the animated/dynamic content you embedded, and what limits does it place on styling a profile README?
 
+### 37. SQL-Data-WareHouseProject  `Archit-175/SQL-Data-WareHouseProject`  — PUBLIC
+- **Repo:** https://github.com/Archit-175/SQL-Data-WareHouseProject
+- **Status:** Complete (learning build) — created 2026-07-11; not under active development.
+- **Description:** A hands-on end-to-end data-warehouse build on SQL Server, following the *Data with Baraa* curriculum. Ingests data from CRM and ERP source systems (CSV) and transforms it through a three-layer medallion architecture (Bronze → Silver → Gold) into a Star Schema ready for analytics.
+- **Problem it solves:** A learning vehicle for data-engineering fundamentals — dimensional modeling, ETL layering, and data-quality validation — not a production product. Demonstrates the shape of a real warehouse: raw ingest, cleaning/standardization with business rules, and a business-ready analytics layer.
+- **Tech Stack:** SQL Server (T-SQL), Docker (SQL Server container with dataset volume mount), medallion architecture (Bronze/Silver/Gold), Star Schema, stored procedures for load orchestration.
+- **My Role:** Sole author (5 commits, all Archit Savaliya). Solo learning build.
+- **Architecture:** Three-schema medallion pipeline. Bronze = raw CSV bulk-loads (no transforms, exact source copy) from CRM (`cust_info`, `prd_info`, `sales_details`) and ERP (`CUST_AZ12`, `LOC_A101`, `PX_CAT_G1V2`). Silver = cleaned, deduplicated, standardized tables with business rules applied, loaded via `proc_load_silver`. Gold = business-ready Star Schema views (`dim_customers`, `dim_products`, `fact_sales`). Each layer has its own DDL + load-proc + execute script; `init_database.sql` creates the DB and schemas.
+- **Key Features Built:**
+  - Full medallion ETL: `ddl_bronze` + `proc_load_bronze`, `ddl_silver` + `proc_load_silver` (transform/clean), `ddl_gold` (Star Schema views).
+  - Data-quality test suites: `quality_checks_silver.sql` and `quality_checks_gold.sql`.
+  - Documentation: data architecture / flow / integration / model diagrams, a column-level `data_catalog.md` for the Gold layer, and `naming_conventions.md`.
+  - Reproducible local setup via `docker-compose.yml` mounting the datasets into a SQL Server container, plus a `SQL Sequence.md` execution order.
+- **ML/AI Details:** None — pure data engineering / SQL.
+- **Database / Storage:** SQL Server. Sources ~18.5K customers, ~397 products, 60,398 sales rows across CRM+ERP flat files.
+- **Complexity Level:** Low–Medium — tutorial-grade, but covers a genuine end-to-end warehouse pattern (medallion layering, dimensional modeling, quality checks).
+- **Resume Bullet:** Built an end-to-end SQL Server data warehouse implementing a Bronze→Silver→Gold medallion architecture — bulk-loading CRM/ERP CSV sources, applying cleaning/standardization business rules via stored-procedure ETL, and modeling a Star Schema (dim_customers, dim_products, fact_sales) with Silver/Gold data-quality test suites, containerized with Docker.
+
+### 38. Data-Analytics-Project-Learning  `Archit-175/Data-Analytics-Project-Learning`  — PUBLIC
+- **Repo:** https://github.com/Archit-175/Data-Analytics-Project-Learning
+- **Status:** Complete (learning build) — created 2026-07-11; not under active development.
+- **Description:** A SQL-analytics companion project (also from the *Data with Baraa* curriculum) running 14 sequenced T-SQL scripts on top of a Gold-layer retail Star Schema (dim_customers 18,484 · dim_products 295 · fact_sales 60,398) — from database setup through exploration to advanced reporting.
+- **Problem it solves:** A structured learning path for analytical SQL — teaches how to interrogate a dimensional model with progressively harder query patterns (window functions, running totals, segmentation, part-to-whole) and package them into reusable customer/product reports. Skills-building, not a product.
+- **Tech Stack:** SQL Server (T-SQL), window functions, CTEs, Docker; `DataWarehouseAnalytics.bak` backup + flat-file CSV loads.
+- **My Role:** Sole author (2 commits, all Archit Savaliya). Solo learning build.
+- **Architecture:** A flat, ordered set of 14 standalone SQL scripts (`00`–`13`) run in sequence against `DataWarehouseAnalytics`: `00_init_database` (drop/recreate DB, create `gold` schema, bulk-load 3 CSVs) → exploration (database/dimensions/date-range/measures) → analysis (magnitude, ranking, change-over-time, cumulative, performance, segmentation, part-to-whole) → final `12_report_customers` and `13_report_products`.
+- **Key Features Built:**
+  - Exploratory scripts: database, dimensions, date-range, and measures exploration.
+  - Analytical scripts: magnitude, ranking, change-over-time (time-series), cumulative (running totals), performance, data segmentation, part-to-whole share analysis.
+  - Two capstone reports consolidating customer and product KPIs.
+  - Docker-based reproducible setup + a `SQL_Query_Guide.md`.
+- **ML/AI Details:** None — analytical SQL only.
+- **Database / Storage:** SQL Server, same retail warehouse as #37 (Gold Star Schema).
+- **Complexity Level:** Low–Medium — standard analytics-SQL curriculum, but demonstrates real fluency with window functions, CTEs, and multi-step reporting.
+- **Resume Bullet:** Wrote 14 sequenced T-SQL analytics scripts over a retail Gold-layer Star Schema (60K+ sales rows) covering exploration, ranking, time-series and cumulative trend analysis, customer segmentation, and part-to-whole share — culminating in consolidated customer and product KPI reports; window functions and CTEs throughout.
+
 
 ## SECTION 2: SKILL MATRIX
 
@@ -942,6 +978,7 @@ This matrix is derived strictly from the 29 analyzed repositories. The proficien
 | Python | Used heavily | Every ML/DS repo (EEG-RL, KidneyTumorSegmentation, Financial-Sentiment, pneumonia-detection, Convolve, Deep-Learning, NLP-LAB, GoogleColab) plus HPC/parallel work. Second core language. |
 | JavaScript (vanilla ES6+) | Used heavily | Full apps built with no framework: SQL-TRACKER, Puzzle-Tracker, Crawlers, plantree_server front end, job/jobApplicatoin front ends. Strong hand-rolled DOM/Web-API fluency. |
 | SQL (Postgres dialect) | Used occasionally | 26-table RLS schema + RPCs in Kore; Supabase Postgres in archit-sl/bright-bird; Prisma/Postgres in sampark. Real schema-design depth in Kore. |
+| SQL (T-SQL / SQL Server) | Used occasionally | Solo learning builds: SQL-Data-WareHouseProject (Bronze→Silver→Gold medallion ETL, Star Schema, stored procs, quality checks) and Data-Analytics-Project-Learning (14 analytics scripts — window functions, CTEs, segmentation, reporting). Demonstrates data-engineering + analytical-SQL fundamentals relevant to data-analyst roles. |
 | C++ (C++17) | Used once | Parallel-Search-Tool (OpenMP/MPI) — but Archit authored no core C++ here (merge-only). Peripheral. |
 | HTML5 / CSS3 | Used heavily | Every front-end repo; deep hand-authored CSS (OKLCH tokens, clamp() fluid type, `svh`, safe-area, embedded base64 woff2) across trackers and CareerPassport sites. |
 | Markdown | Used heavily | Docs across most repos; the profile-README repo is Markdown + embedded HTML end-to-end. |
@@ -1397,7 +1434,7 @@ Open-ended design rounds that build directly on systems he's touched, so he can 
 
 Each row records the **exact commit this report was built from**. Next time you want to update the report, you don't re-read everything — you detect which repos moved since their recorded HEAD and re-analyze only those.
 
-### Analyzed-HEAD ledger (all 36 repos)
+### Analyzed-HEAD ledger (all 38 repos)
 
 | # | Repo | Vis | Branch | Analyzed HEAD | Last commit | Commits |
 |---|---|---|---|---|---|---|
@@ -1437,6 +1474,8 @@ Each row records the **exact commit this report was built from**. Next time you 
 | 34 | `jaindevshrut/Odoo` | PUBLIC | main | `21f1668279` | 2026-05-17 | 14 |
 | 35 | `Omramanuj/archit-sl` | PRIVATE | main | `db33c8cb49` | 2026-05-24 | 32 |
 | 36 | `Archit-175/Archit-175` | PUBLIC | main | `b69e3171e4` | 2026-05-19 | 8 |
+| 37 | `Archit-175/SQL-Data-WareHouseProject` | PUBLIC | main | `b6e1be3a3f` | 2026-07-11 | 5 |
+| 38 | `Archit-175/Data-Analytics-Project-Learning` | PUBLIC | main | `957b6216a7` | 2026-07-11 | 2 |
 
 > **Most likely to change** (active solo work — watch these first on any refresh): `SQL-TRACKER` (2026-07-05), `smprk-backend` (2026-07-03), `Puzzle-Tracker-` (2026-07-01), `Kore` (2026-06-30), `sampark-backend` (2026-06-22), `career-passport-v4` (2026-06-18). The 2024-era repos (`job`, `jobApplicatoin`, `plantree_server`, `Consultancy`) are effectively frozen.
 
@@ -1480,6 +1519,8 @@ Diya5772/pneumonia-detection           main     4aa4540529  2026-05-13
 jaindevshrut/Odoo                      main     21f1668279  2026-05-17
 Omramanuj/archit-sl                    main     db33c8cb49  2026-05-24
 Archit-175/Archit-175                  main     b69e3171e4  2026-05-19
+Archit-175/SQL-Data-WareHouseProject   main     b6e1be3a3f  2026-07-11
+Archit-175/Data-Analytics-Project-Learning main 957b6216a7  2026-07-11
 ```
 
 ### How to refresh next time (what to check)
