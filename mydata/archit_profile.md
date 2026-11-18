@@ -42,7 +42,7 @@ Full name on records: **Savaliya Archit Balvantrai** · DOB 01-07-2005 · Catego
 | **10th (SSC)** | Gujarat Board | 2021 | **74.67%** (448/600); percentile rank 85.11; grade B1 |
 | **12th (HSC), Science (PCM+CS)** | Gujarat Board | 2023 | **73.38%** (477/650); grade B2; percentile 90.50 overall |
 | **JEE Main** | NTA | 2023 | **98.78 percentile**; CRL **14372** (Gen-EWS rank 2093) |
-| **JEE Advanced** | IIT | 2023 | **AIR 4436** |
+| **JEE Advanced** | IIT | 2023 | **AIR 4436** Gen-EWS rank |
 | **B.Tech (current)** | SVNIT Surat | 2023–27 | **CGPA 7.27 / 10** (after Sem 6; 122 credits) |
 
 > **CGPA→% note:** many forms accept **CGPA × 10 ≈ 72.7%**, but SVNIT may specify its own CPI-to-percentage formula — use the institute's official rule if the form demands an exact percentage. 10th/12th were computed as total-obtained ÷ total-max; if a form wants best-5 or theory-only, 12th theory-only was 344/500 = 68.8%.
@@ -86,12 +86,12 @@ Schooling: SSC 2021, HSC Science 2023; **Allen** coaching (pre-college). Full re
 - **2nd→3rd-year summer:** practiced **DSA on LeetCode** (Striver A–Z sheet; progress photo attached). Took part in the **Odoo hackathon** (frontend).
 
 ### 3rd year (projects/research mostly group; his own work often documentation-heavy)
-- **5th sem:** *ML* — **Kidney Tumor Segmentation** research (paper under review); *Data Science* project.
+- **5th sem:** *ML* — **Kidney Tumor Segmentation** research (ongoing — initial submission rejected, currently being revised by teammate; Archit to rejoin post-placement); *Data Science* project.
 - **6th sem:** *RL* — **EEG Emotion Recognition** research; *HPC* — **Parallel Search** (OpenMP/MPI); *CC* — a mini-project (not on GitHub).
 - **This summer break:**
   - Built his **portfolio website**.
   - **Vibecoding competition** with friend **Omramanuj** — 3 hours to code (used ~2h); reused one of Om's older projects to build **archit-sl**. Afterwards, to run it locally + make changes, spun up **bright-bird** — then **paused it** when freelance work came in.
-  - **Freelance @ CareerPassport (startup)** — product-design / "join-the-waitlist" website. Iterations: **careerpassport** (first draft, candidate + companies) → **cpv2** (dark version) → **cpv3** (3D experiment; strong candidate page) → **v4** (final rebuild: candidate, company, blog, about).
+  - **Product Design Internship @ Coxvi Technologies Pvt. Ltd. (CareerPassport startup)** (June 1–30, 2026) — originally started as paid freelance product-design work, for which he received an official Internship Certificate in Product Design (issued July 14, 2026 by Director Saras Satyam). Iterations: **careerpassport** (first draft, candidate + companies) → **cpv2** (dark version) → **cpv3** (3D experiment; strong candidate page) → **v4** (final rebuild: candidate, company, blog, about).
   - **SMPRK / Sampark** — see §5.
   - **Kore** — built (via Claude) **for the SMPRK team** (a workspace/tool).
   - **Puzzle Tracker** & **SQL Tracker** — personal tools (built via Claude) to log daily practice progress.
@@ -106,13 +106,13 @@ Schooling: SSC 2021, HSC Science 2023; **Allen** coaching (pre-college). Full re
 
 **A. Crawlers ecosystem** *(web-dev competition — 1st place)* — `Crawlers` + `plantree_server` (donation/email backend) + `job` + `jobApplication`. Role: **frontend + email flow**, team project.
 
-**B. Freelance / product (CareerPassport startup)** — `careerpassport` → `cpv2` → `cpv3` → `career-passport-v4`. Role: **product design + frontend build** of a waitlist site, iterated across 4 versions; v4 is the flagship. (Solo/lead on the builds.)
+**B. Product Design Internship @ Coxvi Technologies Pvt. Ltd. (CareerPassport startup)** — `careerpassport` → `cpv2` → `cpv3` → `career-passport-v4`. Role: **Product Design Intern / Lead Frontend Developer** (1-month internship, June 1–30, 2026; certificate issued July 14, 2026 by Director Saras Satyam; originally started as paid freelance). Built and iterated the product-design/waitlist site across 4 versions; v4 is the flagship. (Solo/lead on the builds.)
 
 **C. Institute platform — SMPRK / Sampark** *(current, active)* — role **evolved**: started as the **product owner** (defined the problem, features, rules, how the product should work — *not* on the technical team initially, when the only dev was **jeet**), then over the break **took charge of the whole project**, and **built a new junior team** to sustain it year-over-year (it's an institute website that needs continuity). Renamed Sampark → SMPRK. Currently **in the institute approval process**, to be implemented soon. → This is a genuine **team-lead / product-owner** role.
 
 **D. AI-assisted builds & personal tools** — `Kore` (collaborative workspace, built via Claude for the SMPRK team), `archit-portfolio`, `archit-sl` (vibecoding comp w/ Om), `bright-bird` (paused continuation), `SQL-TRACKER` + `Puzzle-Tracker` (personal progress trackers, via Claude).
 
-**E. ML & research** — `KidneyTumorSegmentation` (5th-sem **group** ML research, ~3 months, paper under review, prof-supervised — Archit a **contributor, NOT lead; less contribution**), `EEG-Emotion-Recognition-RL` (6th-sem **group** RL research, ~2 months — Archit a **contributor, not lead**), `pneumonia-detection` (4th-sem AI, co-authored), `Financial-Sentiment-Analysis` (bootcamp, co-authored), `Convolve` (hackathon, co-authored). *(Honesty: for BOTH research papers Archit is a group member with a supporting/minor contribution — frame as "contributed to" collaborative research, never as lead or sole-author.)* **Certifications:** Excel & Power BI (Jatan Shah courses, summer after 1st year).
+**E. ML & research** — `KidneyTumorSegmentation` (5th-sem **group** ML research, ~3 months, **ongoing** — initial paper submission got rejected, teammate is currently working on it, and Archit will rejoin after placement; prof-supervised contributor), `EEG-Emotion-Recognition-RL` (6th-sem **group** RL research, ~2 months — Archit a **contributor, not lead**), `pneumonia-detection` (4th-sem AI, co-authored), `Financial-Sentiment-Analysis` (bootcamp, co-authored), `Convolve` (hackathon, co-authored). *(Honesty: for BOTH research papers Archit is a group member with a supporting/minor contribution — frame as "contributed to" collaborative research, never as lead or sole-author.)* **Certifications:** Excel & Power BI (Jatan Shah courses, summer after 1st year).
 
 **F. Systems / other academic** — `Parallel-Search-Tool` (6th-sem HPC, OpenMP/MPI), 3rd-sem OOP game project, 6th-sem CC mini-project (not on GitHub).
 
@@ -181,7 +181,7 @@ Archit's leadership record is deep and is arguably his strongest differentiator 
 
 Given the profile **+** the campus constraints he described, the realistic and strongest-fit targets are:
 
-1. **AI / ML roles** (applied ML, CV/medical, data science) — backed by the Kidney-Tumor (paper under review) and EEG-RL research, plus ML breadth.
+1. **AI / ML roles** (applied ML, CV/medical, data science) — backed by the Kidney-Tumor (ongoing research) and EEG-RL research, plus ML breadth.
 2. **Data Analyst / Analytics roles** — the track he's actively upskilling for (SQL + a data project); a pragmatic, branch-eligible target.
 3. **Product / Associate-Product / management-track roles where AI students are eligible** — this is where his **rare combination** shines: he ships full products *and* has led large teams/events/budgets. His PoR record (Student Council Admin, MINDBEND lead, ACM Secretary, started the AI-dept CDC) is a genuine differentiator that most engineering candidates simply don't have.
 
@@ -213,5 +213,5 @@ The through-line — *product thinking + leadership/coordination + AI + shipping
 - **`plantree_server` is the Crawlers donation/email backend** — part of the Crawlers project, not a standalone (same as `job`/`jobApplication`).
 - **Sampark/SMPRK role clarified:** product owner first → took charge → built a junior team (strengthens the "team lead" framing already in the report).
 - **`Kore` was built for the SMPRK team**; **`archit-sl`** came from a 3-hour vibecoding competition with Omramanuj; **`bright-bird`** is his paused local continuation.
-- **CareerPassport family = paid freelance** product-design work for a startup.
+- **CareerPassport family = Product Design Internship at Coxvi Technologies Pvt. Ltd.** (1 month, June 2026; originally started as paid freelance).
 - *(I can propagate these into `archit_career_context.md` on request.)*
